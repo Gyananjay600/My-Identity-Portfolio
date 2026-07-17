@@ -8,7 +8,7 @@ export const profile = {
   email: "gyananjaysahoo8@gmail.com",
   phone: "+91 89840 96402",
   whatsapp: "918984096402", // country code + number, no + or spaces (wa.me format)
-  resumePath: "src/assets/resume/FinalResume(Gyananjay).pdf",
+  resumePath: "/public/assets/resume/FinalResume(Gyananjay).pdf",
   social: {
     github: "https://github.com/Gyananjay600",
     linkedin: "https://www.linkedin.com/in/gyananjay-sahoo/",
