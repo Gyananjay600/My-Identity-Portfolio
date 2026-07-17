@@ -11,7 +11,7 @@ export const projects = [
     description:
       "Spring Boot 3 + Spring AI application that integrates the Groq API (LLaMA 3) for predictive vehicle maintenance. Includes heuristic risk scoring, scheduled data simulation, and role-based access for Owner / Engineer / Admin.",
     stack: ["Spring Boot", "Spring AI", "Groq API", "Spring Security", "Thymeleaf", "Chart.js", "MySQL"],
-    image: "src/assets/images/projects/autoguard-ai.png",
+    image: "/public/assets/images/projects/autoguard-ai.png",
     github: "https://github.com/Gyananjay600",
     live: "",
     metrics: [
