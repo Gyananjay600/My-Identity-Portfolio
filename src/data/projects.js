@@ -11,7 +11,7 @@ export const projects = [
     description:
       "Spring Boot 3 + Spring AI application that integrates the Groq API (LLaMA 3) for predictive vehicle maintenance. Includes heuristic risk scoring, scheduled data simulation, and role-based access for Owner / Engineer / Admin.",
     stack: ["Spring Boot", "Spring AI", "Groq API", "Spring Security", "Thymeleaf", "Chart.js", "MySQL"],
-    image: "/public/assets/images/projects/autoguard-ai.png",
+    image: "/assets/images/projects/autoguard-ai.png",
     github: "https://github.com/Gyananjay600",
     live: "",
     metrics: [
@@ -26,7 +26,7 @@ export const projects = [
     description:
       "A blog platform built with Spring Boot and MySQL, secured end-to-end with stateless JWT auth. Solved real CORS preflight and Spring Security edge cases along the way.",
     stack: ["Spring Boot", "Spring Security", "JWT", "MySQL", "React"],
-    image: "/public/assets/images/projects/blog-platform.png",
+    image: "/assets/images/projects/blog-platform.png",
     github: "https://github.com/Gyananjay600",
     live: "",
     metrics: [

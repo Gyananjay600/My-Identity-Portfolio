@@ -78,7 +78,7 @@ export default function About() {
             <div className="relative rounded-[1.75rem] border hairline bg-cream-soft p-3 shadow-premium">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-deep">
                 <img
-                  src="/public/assets/images/profile/profile.png"
+                  src="/assets/images/profile/profile.png"
                   alt={profile.name}
                   className="h-full w-full object-cover"
                   loading="lazy"
