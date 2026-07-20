@@ -24,13 +24,13 @@ const achievements = [
 const certifications = [
   {
     title: "DATA ANALYTICS WITH PYTHON",
-    issuer: "Self-paced / Project-based",
+    issuer: "Central Tool Room & Training Centre, Bhubaneswar",
     verifyLabel: "View Certificate",
     href: "/assets/certificate/dataAnalytics.png",
   },
   {
     title: "CORE JAVA",
-    issuer: "Self-paced / Project-based",
+    issuer: "Central Tool Room & Training Centre, Bhubaneswar",
     verifyLabel: "View Certificate",
     href: "/assets/certificate/core_java.png",
   },
