@@ -23,17 +23,23 @@ const achievements = [
 
 const certifications = [
   {
-    title: "Java Full Stack Development",
+    title: "DATA ANALYTICS WITH PYTHON",
     issuer: "Self-paced / Project-based",
     verifyLabel: "View Certificate",
-    href: "#",
+    href: "/assets/certificate/dataAnalytics.png",
+  },
+  {
+    title: "CORE JAVA",
+    issuer: "Self-paced / Project-based",
+    verifyLabel: "View Certificate",
+    href: "/assets/certificate/core_java.png",
   },
   {
     title: "Spring Boot & REST APIs",
     issuer: "Self-paced / Project-based",
     verifyLabel: "View Certificate",
     href: "#",
-  },
+  }
 ];
 
 export default function Achievements() {
