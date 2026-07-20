@@ -45,7 +45,7 @@ export default function Projects() {
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className={fromLeft ? "md:order-1" : "md:order-2"}
                   >
-                    <LaptopFrame image={project.image} title={project.title} />
+                    <LaptopFrame image={project.image} title={project.title} className='object-contain' />
                   </motion.div>
 
                   <motion.div

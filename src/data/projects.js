@@ -26,7 +26,7 @@ export const projects = [
     description:
       "A blog platform built with Spring Boot and MySQL, secured end-to-end with stateless JWT auth. Solved real CORS preflight and Spring Security edge cases along the way.",
     stack: ["Spring Boot", "Spring Security", "JWT", "MySQL", "React"],
-    image: "/assets/images/projects/blog-platform.png",
+    image: "/public/assets/images/projects/blog-platform.png",
     github: "https://github.com/Gyananjay600",
     live: "",
     metrics: [
@@ -56,7 +56,7 @@ export const projects = [
     description:
       "A personal portfolio built with a strong Java Full Stack foundation and AI integration woven into the experience, from the code-typing hero to project storytelling.",
     stack: ["React", "Tailwind CSS", "Framer Motion", "Three.js"],
-    image: "/assets/images/projects/ai-portfolio.png",
+    image: "/assets/images/projects/gyana-portfolio.png",
     github: "https://github.com/Gyananjay600",
     live: "",
     metrics: [

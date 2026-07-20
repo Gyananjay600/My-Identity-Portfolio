@@ -4,6 +4,12 @@ import SectionHeading from "./SectionHeading.jsx";
 
 const education = [
   {
+    stage: "XII, Science",
+    org: "Simulia College, Markona, Baleshwar",
+    period: "2021 — 2023",
+    note: "Batch of 2021–23",
+  },
+  {
     stage: "B.Tech, Computer Science & Engineering",
     org: "Gandhi Institute of Excellent Technocrats, Bhubaneswar",
     period: "2023 — 2027",
