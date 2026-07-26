@@ -35,10 +35,16 @@ const certifications = [
     href: "/assets/certificate/core_java.png",
   },
   {
-    title: "Spring Boot & REST APIs",
-    issuer: "Self-paced / Project-based",
+    title: "Java Development",
+    issuer: "TechnoHacks Solutions Pvt. Ltd.",
     verifyLabel: "View Certificate",
-    href: "#",
+    href: "/assets/images/projects/java_development.pdf",
+  },
+  {
+    title: "Full Stack Web Development",
+    issuer: "Thairanex",
+    verifyLabel: "View Certificate",
+    href: "/assets/images/projects/full_stack_development.pdf",
   }
 ];
 
