@@ -41,7 +41,7 @@ export const projects = [
     description:
       "A task management application built on React (Vite) for the UI and Node.js/Express with Sequelize ORM on MySQL for the backend, with full CRUD and status tracking.",
     stack: ["React", "Vite", "Node.js", "Express", "Sequelize", "MySQL"],
-    image: "/assets/images/projects/task-manager.png",
+    image: "/assets/images/projects/task_manager_app.png",
     github: "https://github.com/Gyananjay600",
     live: "",
     metrics: [
