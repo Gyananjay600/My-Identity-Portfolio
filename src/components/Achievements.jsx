@@ -50,7 +50,7 @@ const certifications = [
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="relative py-24 sm:py-32">
+    <section id="achievements" className="relative py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow="05 · Recognition" title="Achievements & certifications." />
 

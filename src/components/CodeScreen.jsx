@@ -1,29 +1,62 @@
+import { useMemo } from "react";
 import { useTypewriter } from "../hooks/useTypewriter.js";
 import { profile } from "../data/profile.js";
 
-const CODE_LINES = [
-  "public class Gyananjay {",
-  "",
-  "    // Java Full Stack Developer",
-  "    private String name = \"Gyananjay Sahoo\";",
-  "    private String role = \"Spring Boot + React\";",
-  "    private boolean curious = true;",
-  "",
-  "    public String aboutMe() {",
-  "        return \"Builds real systems,\"",
-  "             + \" not copied patterns.\";",
-  "    }",
-  "",
-  "    public static void main(String[] args) {",
-  "        System.out.println(aboutMe());",
-  "    }",
-  "}",
+const SNIPPETS = [
+  [
+    "public class Gyananjay {",
+    "",
+    "    // Java Full Stack Developer",
+    '    String name  = "Gyananjay Sahoo";',
+    '    String role  = "Spring Boot + React";',
+    '    String loc   = "Bhubaneswar, Odisha";',
+    '    String email = "gyananjaysahoo8@gmail.com";',
+    "",
+    "    boolean isAvailable() {",
+    '        return true; // open to work',
+    "    }",
+    "}",
+  ],
+  [
+    "public class Skills {",
+    "",
+    "    // Backend",
+    '    String[] backend  = { "Java", "Spring Boot", "REST" };',
+    '    String[] frontend = { "React", "Vite", "Tailwind" };',
+    '    String[] database = { "MySQL", "MongoDB" };',
+    '    String[] tools    = { "Git", "Docker", "AI" };',
+    "",
+    "    void learn() {",
+    '        while (true) { improve(); }',
+    "    }",
+    "}",
+  ],
+  [
+    "public class Goals {",
+    "",
+    "    // What I bring",
+    '    String tagline = "Builds real systems,";',
+    '    String more    = "not copied patterns.";',
+    "",
+    "    void mission() {",
+    '        System.out.println(tagline + more);',
+    '        System.out.println("Let\'s build together!");',
+    "    }",
+    "",
+    "    // github.com/Gyananjay600",
+    "}",
+  ],
 ];
 
 export default function CodeScreen() {
+  // Pick a different snippet on every mount (each render/refresh)
+  const CODE_LINES = useMemo(
+    () => SNIPPETS[Math.floor(Math.random() * SNIPPETS.length)],
+    []
+  );
   const { completedLines, activeLine } = useTypewriter(CODE_LINES, {
-    speed: 26,
-    pause: 2200,
+    speed: 28,
+    pause: 1800,
   });
 
   return (

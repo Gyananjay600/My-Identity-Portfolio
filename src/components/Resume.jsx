@@ -5,7 +5,7 @@ import { profile } from "../data/profile.js";
 
 export default function Resume() {
   return (
-    <section id="resume" className="relative py-24 sm:py-32">
+    <section id="resume" className="relative py-12 sm:py-16">
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeading eyebrow="07 · Resume" title="One PDF, everything on it." />
 

@@ -31,7 +31,7 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="relative overflow-hidden bg-cream-soft py-24 sm:py-32"
+      className="relative overflow-hidden bg-cream-soft py-12 sm:py-16"
     >
       {/* Premium Background */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(197,160,89,0.10),transparent_65%)]" />

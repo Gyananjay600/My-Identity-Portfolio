@@ -9,15 +9,16 @@ const badges = ["Java", "Spring Boot", "React", "MySQL", "AI Integration"];
 
 export default function Hero() {
   return (
-    <section id="home" className="relative flex min-h-screen items-center overflow-hidden pt-28">
+    <section id="home" className="relative flex min-h-screen items-center pt-28">
       {/* ambient background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-brass/10 blur-[110px]" />
         <div className="absolute bottom-0 right-0 h-[26rem] w-[26rem] rounded-full bg-deep/10 blur-[100px]" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 px-6 pb-16 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 px-6 pb-16 lg:grid-cols-[1fr_1fr]">
         <motion.div
+          className="relative z-10"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -103,21 +104,32 @@ export default function Hero() {
           </div>
         </motion.div>
 
+        {/* 3D Scene — fixed on right, overlaying the hero with no height clip */}
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="relative h-[380px] sm:h-[460px] lg:h-[520px]"
+          className="relative hidden lg:block"
+          style={{ minHeight: 520 }}
         >
-          <Suspense
-            fallback={
-              <div className="flex h-full w-full items-center justify-center font-mono text-sm text-ink-faint">
-                loading scene…
-              </div>
-            }
+          {/* The canvas extends beyond its parent so it is never clipped */}
+          <div
+            style={{
+              position: "absolute",
+              inset: "-80px -60px -80px -40px",
+              zIndex: 0,
+            }}
           >
-            <Scene3D />
-          </Suspense>
+            <Suspense
+              fallback={
+                <div className="flex h-full w-full items-center justify-center font-mono text-sm text-ink-faint">
+                  loading scene…
+                </div>
+              }
+            >
+              <Scene3D />
+            </Suspense>
+          </div>
         </motion.div>
       </div>
 

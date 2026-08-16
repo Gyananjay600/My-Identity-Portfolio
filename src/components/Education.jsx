@@ -19,7 +19,7 @@ const education = [
 
 export default function Education() {
   return (
-    <section id="education" className="relative py-24 sm:py-32">
+    <section id="education" className="relative py-12 sm:py-16">
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeading eyebrow="06 · Education" title="Academic background." />
         <div className="mt-12 space-y-5">

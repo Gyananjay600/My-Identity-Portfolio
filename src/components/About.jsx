@@ -42,7 +42,7 @@ const orbitBadges = [
 
 export default function About() {
   return (
-    <section id="about" className="relative overflow-hidden py-24 sm:py-32">
+    <section id="about" className="relative overflow-hidden py-12 sm:py-16">
       {/* ambient premium glow */}
       <div className="pointer-events-none absolute -left-32 top-10 -z-10 h-[28rem] w-[28rem] rounded-full bg-brass/10 blur-[120px]" />
       <div className="pointer-events-none absolute -right-24 bottom-0 -z-10 h-[22rem] w-[22rem] rounded-full bg-deep/10 blur-[110px]" />

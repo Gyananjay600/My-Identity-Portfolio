@@ -4,7 +4,7 @@ import { experience } from "../data/experience.js";
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-24 sm:py-32">
+    <section id="experience" className="relative py-12 sm:py-16">
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeading eyebrow="02 · Timeline" title="Where the time went." />
 

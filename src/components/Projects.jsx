@@ -14,7 +14,7 @@ export default function Projects() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section id="projects" className="relative py-24 sm:py-32">
+    <section id="projects" className="relative py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="04 · Featured Work"
