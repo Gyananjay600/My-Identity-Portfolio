@@ -5,6 +5,21 @@
 // 4. Save the file — the new laptop card appears automatically on the line.
 export const projects = [
   {
+    id: "jaydurga-silpanusthana",
+    title: "Jay Durga Silpanusthana",
+    tagline: "Odisha sculpture studio & artisan management platform",
+    description:
+      "A digital platform for Jay Durga Silpanusthana traditional Odisha sculpture studio, featuring bilingual support (English & Odia), Web Speech voice assistant, custom murti enquiries, and artisan wage & inventory tracking.",
+    stack: ["React", "Tailwind CSS", "Web Speech API", "react-i18next", "Node.js", "Express", "MySQL"],
+    image: "/assets/images/projects/jaydurga-silpanusthana.png",
+    github: "https://github.com/Gyananjay600/JayDurga_Silpanusthana_Platform",
+    live: "",
+    metrics: [
+      { label: "Language", value: "Bilingual" },
+      { label: "Voice AI", value: "Web Speech" },
+    ],
+  },
+  {
     id: "autoguard-ai",
     title: "Auto Guard AI",
     tagline: "AI-assisted vehicle maintenance prediction platform",
