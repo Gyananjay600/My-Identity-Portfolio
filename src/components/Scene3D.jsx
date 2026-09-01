@@ -108,12 +108,6 @@ function CodeParticles() {
 function DesktopSetup() {
   const group = useRef();
 
-  useFrame(({ clock }) => {
-    if (!group.current) return;
-    const t = clock.getElapsedTime();
-    group.current.position.y = -0.3 + Math.sin(t * 0.6) * 0.035;
-  });
-
   return (
     <group ref={group} position={[0, -0.3, 0]}>
       {/* Desk Mat */}
@@ -136,12 +130,12 @@ function DesktopSetup() {
           <meshStandardMaterial color="#111" roughness={0.3} metalness={0.8} />
         </RoundedBox>
         {/* Monitor Screen Bezel (Front) */}
-        <mesh position={[0, 0, 0.041]}>
+        <mesh position={[0, 0, 0.0405]}>
           <planeGeometry args={[2.75, 1.15]} />
           <meshStandardMaterial color="#050505" roughness={0.4} metalness={0.2} />
         </mesh>
         {/* Monitor Display */}
-        <mesh position={[0, 0, 0.043]}>
+        <mesh position={[0, 0, 0.041]}>
           <planeGeometry args={[2.7, 1.1]} />
           <meshStandardMaterial
             color="#0F1E1D"
@@ -154,23 +148,37 @@ function DesktopSetup() {
         {/* CodeScreen */}
         <Html
           transform
-          position={[0, 0, 0.045]}
+          position={[0, 0, 0.052]}
           distanceFactor={1.4}
+          zIndexRange={[100, 0]}
           className="pointer-events-none select-none"
+          style={{
+            pointerEvents: "none",
+            userSelect: "none",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transformStyle: "preserve-3d",
+          }}
         >
-          <div style={{ width: '800px', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{ transform: 'scale(1.2)' }}>
-              <CodeScreen />
-            </div>
+          <div style={{ width: "620px", height: "375px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <CodeScreen />
           </div>
         </Html>
         {/* Back Logo */}
         <Html
           transform
-          position={[0, 0, -0.042]}
+          position={[0, 0, -0.048]}
           rotation={[0, Math.PI, 0]}
           distanceFactor={1.5}
+          zIndexRange={[50, 0]}
           className="pointer-events-none select-none"
+          style={{
+            pointerEvents: "none",
+            userSelect: "none",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transformStyle: "preserve-3d",
+          }}
         >
           <LidBackLogo />
         </Html>

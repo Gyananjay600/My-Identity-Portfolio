@@ -61,10 +61,16 @@ export default function CodeScreen() {
 
   return (
     <div
-      style={{ width: 620, height: 375 }}
+      style={{
+        width: 620,
+        height: 375,
+        backfaceVisibility: "hidden",
+        WebkitBackfaceVisibility: "hidden",
+        transform: "translateZ(0)",
+      }}
       className="flex flex-col overflow-hidden rounded-[6px] bg-[#0F1E1D] font-mono text-[15px] leading-relaxed text-[#EADFC2] shadow-inner"
     >
-      <div className="flex items-center gap-1.5 border-b border-[#22403D] bg-[#122726] px-3 py-2">
+      <div className="flex items-center gap-1.5 border-b border-[#22403D] bg-[#122726] px-3 py-2 select-none">
         <span className="h-2.5 w-2.5 rounded-full bg-[#D9724F]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#D9A94B]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#7FA98C]" />
@@ -72,12 +78,12 @@ export default function CodeScreen() {
       </div>
       <div className="flex-1 overflow-hidden px-4 py-3">
         {completedLines.map((line, i) => (
-          <div key={i} className="whitespace-pre">
+          <div key={i} className="whitespace-pre min-h-[22px]">
             <span className="mr-3 text-[#4E6A65]">{String(i + 1).padStart(2, "0")}</span>
             <SyntaxLine text={line} />
           </div>
         ))}
-        <div className="whitespace-pre">
+        <div className="whitespace-pre min-h-[22px]">
           <span className="mr-3 text-[#4E6A65]">
             {String(completedLines.length + 1).padStart(2, "0")}
           </span>
@@ -85,7 +91,7 @@ export default function CodeScreen() {
           <span className="ml-0.5 inline-block h-[1.1em] w-[7px] translate-y-[2px] animate-pulse bg-[#B9852E]" />
         </div>
       </div>
-      <div className="border-t border-[#22403D] bg-[#122726] px-3 py-1.5 text-[10px] text-[#7FA98C]">
+      <div className="border-t border-[#22403D] bg-[#122726] px-3 py-1.5 text-[10px] text-[#7FA98C] select-none">
         {profile.location} · UTF-8 · Java 17
       </div>
     </div>

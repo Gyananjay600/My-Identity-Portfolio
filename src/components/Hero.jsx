@@ -106,9 +106,9 @@ export default function Hero() {
 
         {/* 3D Scene — fixed on right, overlaying the hero with no height clip */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
           className="relative hidden lg:block"
           style={{ minHeight: 520 }}
         >

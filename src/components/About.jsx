@@ -80,17 +80,7 @@ export default function About() {
                 <img
                   src="/assets/images/profile/profile.png"
                   alt={profile.name}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                    e.currentTarget.nextSibling.style.display = "flex";
-                  }}
-                />
-                <img
-                  src="/src/assets/images/profile/profile.png"
-                  alt="Gyananjay Sahoo"
-                  className="h-full w-full object-cover hover:scale-105 transition-transform duration-300 sha"
+                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   loading="lazy"
                 />
 
