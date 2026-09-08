@@ -130,12 +130,12 @@ function DesktopSetup() {
           <meshStandardMaterial color="#111" roughness={0.3} metalness={0.8} />
         </RoundedBox>
         {/* Monitor Screen Bezel (Front) */}
-        <mesh position={[0, 0, 0.0405]}>
+        <mesh position={[0, 0, 0.042]}>
           <planeGeometry args={[2.75, 1.15]} />
           <meshStandardMaterial color="#050505" roughness={0.4} metalness={0.2} />
         </mesh>
         {/* Monitor Display */}
-        <mesh position={[0, 0, 0.041]}>
+        <mesh position={[0, 0, 0.044]}>
           <planeGeometry args={[2.7, 1.1]} />
           <meshStandardMaterial
             color="#0F1E1D"
@@ -143,14 +143,17 @@ function DesktopSetup() {
             metalness={0.1}
             emissive="#0d1b2a"
             emissiveIntensity={0.5}
+            polygonOffset
+            polygonOffsetFactor={-1}
+            polygonOffsetUnits={-1}
           />
         </mesh>
         {/* CodeScreen */}
         <Html
           transform
-          position={[0, 0, 0.052]}
+          position={[0, 0, 0.047]}
           distanceFactor={1.4}
-          zIndexRange={[100, 0]}
+          occlude={false}
           className="pointer-events-none select-none"
           style={{
             pointerEvents: "none",
@@ -158,19 +161,20 @@ function DesktopSetup() {
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transformStyle: "preserve-3d",
+            willChange: "transform",
           }}
         >
           <div style={{ width: "620px", height: "375px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <CodeScreen />
+            <CodeScreen is3D={true} />
           </div>
         </Html>
         {/* Back Logo */}
         <Html
           transform
-          position={[0, 0, -0.048]}
+          position={[0, 0, -0.046]}
           rotation={[0, Math.PI, 0]}
           distanceFactor={1.5}
-          zIndexRange={[50, 0]}
+          occlude={false}
           className="pointer-events-none select-none"
           style={{
             pointerEvents: "none",
@@ -178,6 +182,7 @@ function DesktopSetup() {
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transformStyle: "preserve-3d",
+            willChange: "transform",
           }}
         >
           <LidBackLogo />
@@ -191,7 +196,7 @@ function DesktopSetup() {
           <meshStandardMaterial color="#0a0a0c" roughness={0.7} metalness={0.3} />
         </RoundedBox>
         {/* Glass Panel (Left side facing monitor) */}
-        <mesh position={[-0.355, 0, 0]} rotation={[0, -Math.PI / 2, 0]}>
+        <mesh position={[-0.358, 0, 0]} rotation={[0, -Math.PI / 2, 0]}>
           <planeGeometry args={[1.3, 1.1]} />
           <meshPhysicalMaterial color="#000" transparent opacity={0.4} roughness={0.1} metalness={0.8} />
         </mesh>
@@ -217,7 +222,7 @@ function DesktopSetup() {
       <RoundedBox args={[0.15, 0.04, 0.25]} radius={0.02} position={[0.4, 0.035, 0.5]} castShadow>
         <meshStandardMaterial color="#1A1C23" roughness={0.6} metalness={0.4} />
         {/* Mouse Glow (bottom) */}
-        <mesh position={[0, -0.015, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <mesh position={[0, -0.021, 0]} rotation={[Math.PI / 2, 0, 0]}>
            <planeGeometry args={[0.13, 0.23]} />
            <meshStandardMaterial color="#3FA893" emissive="#3FA893" emissiveIntensity={2} />
         </mesh>
@@ -233,7 +238,12 @@ export default function Scene3D() {
       shadows
       dpr={[1, 1.8]}
       camera={{ position: [0, 0.8, 5.2], fov: 45 }}
-      gl={{ antialias: true, alpha: true }}
+      gl={{
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance",
+        logarithmicDepthBuffer: true,
+      }}
     >
       <ambientLight intensity={0.6} />
       <directionalLight

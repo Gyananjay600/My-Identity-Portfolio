@@ -12,9 +12,9 @@ export default function Resume() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, margin: "-30px" }}
           transition={{ duration: 0.6 }}
-          className="mt-12 flex flex-col items-center gap-6 rounded-3xl border hairline bg-cream-soft p-10 text-center shadow-premium"
+          className="mt-12 flex flex-col items-center gap-6 rounded-3xl border hairline bg-cream-soft p-8 text-center shadow-premium sm:p-10"
         >
           <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-deep text-cream-soft">
             <FileText size={28} />
@@ -29,7 +29,7 @@ export default function Resume() {
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href={profile.resumePath}
-              download
+              download={profile.resumeDownloadName || "FinalResume(Gyananjay).pdf"}
               className="inline-flex items-center gap-2 rounded-full bg-deep px-6 py-3 font-mono text-sm text-cream-soft transition-transform hover:-translate-y-0.5 hover:bg-brass"
             >
               <Download size={16} /> Download Resume

@@ -59,7 +59,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="relative mx-auto w-full max-w-sm lg:sticky lg:top-28"
           >
@@ -70,6 +70,8 @@ export default function About() {
               style={{
                 background:
                   "conic-gradient(from 0deg, #B9852E, transparent 30%, transparent 70%, #B9852E)",
+                willChange: "transform",
+                transform: "translateZ(0)",
               }}
               animate={{ rotate: 360 }}
               transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
@@ -129,7 +131,7 @@ export default function About() {
                 key={fact.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true, margin: "-30px" }}
                 transition={{
                   duration: 0.55,
                   delay: i * 0.08,

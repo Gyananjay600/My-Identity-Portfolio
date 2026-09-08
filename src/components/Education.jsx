@@ -28,7 +28,7 @@ export default function Education() {
               key={item.stage}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={{ once: true, margin: "-30px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="flex gap-4 rounded-2xl border hairline bg-cream-soft p-6 shadow-card"
             >

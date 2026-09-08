@@ -71,9 +71,9 @@ export default function Navbar() {
 
       {open && (
         <motion.nav
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
           className="mx-4 mt-2 flex flex-col overflow-hidden rounded-2xl border hairline bg-cream-soft shadow-card lg:hidden"
         >
           {LINKS.map((link) => (
@@ -81,11 +81,20 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="border-b hairline px-5 py-3 font-mono text-sm text-ink-soft last:border-b-0"
+              className="border-b hairline px-5 py-3 font-mono text-sm text-ink-soft last:border-b-0 hover:bg-cream-dim"
             >
               {link.label}
             </a>
           ))}
+          <div className="p-4 pt-2 border-t hairline bg-cream-dim/50">
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="flex w-full items-center justify-center rounded-full bg-deep px-5 py-2.5 font-mono text-xs text-cream-soft transition-transform hover:bg-brass"
+            >
+              Hire Me
+            </a>
+          </div>
         </motion.nav>
       )}
     </motion.header>

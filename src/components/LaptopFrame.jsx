@@ -28,7 +28,7 @@ export default function LaptopFrame({ image, title }) {
       {/* hinge */}
       <div className="h-2 rounded-b-sm bg-deep" />
       {/* base */}
-      <div className="mx-auto h-2 w-[104%] max-w-md -translate-x-[2%] rounded-b-xl bg-gradient-to-b from-brass to-brass-dark shadow-card" />
+      <div className="mx-auto h-2 w-full max-w-md rounded-b-xl bg-gradient-to-b from-brass to-brass-dark shadow-card" />
     </div>
   );
 }

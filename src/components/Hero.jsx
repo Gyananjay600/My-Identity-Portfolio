@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Mail, Github, Linkedin } from "lucide-react";
 import { profile } from "../data/profile.js";
+import CodeScreen from "./CodeScreen.jsx";
 
 const Scene3D = lazy(() => import("./Scene3D.jsx"));
 
@@ -9,14 +10,14 @@ const badges = ["Java", "Spring Boot", "React", "MySQL", "AI Integration"];
 
 export default function Hero() {
   return (
-    <section id="home" className="relative flex min-h-screen items-center pt-28">
+    <section id="home" className="relative flex min-h-screen items-center pt-24 sm:pt-28">
       {/* ambient background */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-1/2 top-0 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-brass/10 blur-[110px]" />
         <div className="absolute bottom-0 right-0 h-[26rem] w-[26rem] rounded-full bg-deep/10 blur-[100px]" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 px-6 pb-16 lg:grid-cols-[1fr_1fr]">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 px-6 pb-16 lg:grid-cols-[1.05fr_0.95fr]">
         <motion.div
           className="relative z-10"
           initial={{ opacity: 0, y: 24 }}
@@ -31,12 +32,12 @@ export default function Hero() {
             {profile.availability}
           </span>
 
-          <h1 className="mt-6 font-display text-[2.75rem] font-semibold leading-[1.05] text-ink sm:text-6xl">
+          <h1 className="mt-6 font-display text-3xl font-semibold leading-[1.1] text-ink sm:text-5xl lg:text-6xl">
             Hi, I'm {profile.name.split(" ")[0]} —
             <span className="block text-brass">I build with Java &amp; Spring.</span>
           </h1>
 
-          <p className="mt-5 max-w-lg text-[1.05rem] leading-relaxed text-ink-soft">
+          <p className="mt-5 max-w-lg text-[0.98rem] sm:text-[1.05rem] leading-relaxed text-ink-soft">
             A {profile.role} from {profile.location}, shipping full-stack
             applications with Spring Boot, React and thoughtful AI
             integration — {profile.tagline.toLowerCase()}
@@ -45,20 +46,22 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#contact"
-              className="rounded-full bg-deep px-6 py-3 font-mono text-sm text-cream-soft shadow-premium transition-transform hover:-translate-y-0.5 hover:bg-brass"
+              className="rounded-full bg-deep px-5 sm:px-6 py-3 font-mono text-sm text-cream-soft shadow-premium transition-transform hover:-translate-y-0.5 hover:bg-brass"
             >
               Hire Me
             </a>
             <a
               href="#projects"
-              className="rounded-full border hairline bg-cream-soft px-6 py-3 font-mono text-sm text-ink transition-transform hover:-translate-y-0.5 hover:border-brass"
+              className="rounded-full border hairline bg-cream-soft px-5 sm:px-6 py-3 font-mono text-sm text-ink transition-transform hover:-translate-y-0.5 hover:border-brass"
             >
               View Projects
             </a>
             <a
               href={profile.resumePath}
-              download
-              className="inline-flex items-center gap-2 rounded-full border hairline px-6 py-3 font-mono text-sm text-ink transition-transform hover:-translate-y-0.5 hover:border-brass"
+              download={profile.resumeDownloadName || "FinalResume(Gyananjay).pdf"}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border hairline px-5 sm:px-6 py-3 font-mono text-sm text-ink transition-transform hover:-translate-y-0.5 hover:border-brass"
             >
               <Download size={15} /> Resume
             </a>
@@ -104,31 +107,41 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* 3D Scene — fixed on right, overlaying the hero with no height clip */}
+        {/* 3D Scene on Desktop, Responsive Interactive Code Terminal on Tablet/Mobile */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-          className="relative hidden lg:block"
-          style={{ minHeight: 520 }}
+          className="relative w-full"
         >
-          {/* The canvas extends beyond its parent so it is never clipped */}
-          <div
-            style={{
-              position: "absolute",
-              inset: "-80px -60px -80px -40px",
-              zIndex: 0,
-            }}
-          >
-            <Suspense
-              fallback={
-                <div className="flex h-full w-full items-center justify-center font-mono text-sm text-ink-faint">
-                  loading scene…
-                </div>
-              }
+          {/* Desktop 3D Scene */}
+          <div className="hidden lg:block relative" style={{ minHeight: 520 }}>
+            <div
+              style={{
+                position: "absolute",
+                inset: "-80px -60px -80px -40px",
+                zIndex: 0,
+              }}
             >
-              <Scene3D />
-            </Suspense>
+              <Suspense
+                fallback={
+                  <div className="flex h-full w-full items-center justify-center font-mono text-sm text-ink-faint">
+                    loading scene…
+                  </div>
+                }
+              >
+                <Scene3D />
+              </Suspense>
+            </div>
+          </div>
+
+          {/* Mobile & Tablet Terminal Window */}
+          <div className="block lg:hidden mt-4 mx-auto w-full max-w-lg">
+            <div className="rounded-2xl border hairline bg-[#0F1E1D] p-2.5 sm:p-3 shadow-premium">
+              <div className="overflow-hidden rounded-xl">
+                <CodeScreen is3D={false} />
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

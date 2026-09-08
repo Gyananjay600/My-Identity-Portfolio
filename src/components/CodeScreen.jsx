@@ -48,7 +48,7 @@ const SNIPPETS = [
   ],
 ];
 
-export default function CodeScreen() {
+export default function CodeScreen({ is3D = false }) {
   // Pick a different snippet on every mount (each render/refresh)
   const CODE_LINES = useMemo(
     () => SNIPPETS[Math.floor(Math.random() * SNIPPETS.length)],
@@ -62,13 +62,15 @@ export default function CodeScreen() {
   return (
     <div
       style={{
-        width: 620,
+        width: is3D ? 620 : "100%",
+        maxWidth: 620,
         height: 375,
         backfaceVisibility: "hidden",
         WebkitBackfaceVisibility: "hidden",
         transform: "translateZ(0)",
+        contain: "layout paint style",
       }}
-      className="flex flex-col overflow-hidden rounded-[6px] bg-[#0F1E1D] font-mono text-[15px] leading-relaxed text-[#EADFC2] shadow-inner"
+      className="flex flex-col overflow-hidden rounded-[6px] bg-[#0F1E1D] font-mono text-[12px] sm:text-[14px] md:text-[15px] leading-relaxed text-[#EADFC2] shadow-inner"
     >
       <div className="flex items-center gap-1.5 border-b border-[#22403D] bg-[#122726] px-3 py-2 select-none">
         <span className="h-2.5 w-2.5 rounded-full bg-[#D9724F]" />

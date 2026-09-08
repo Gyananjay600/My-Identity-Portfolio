@@ -39,9 +39,9 @@ export default function Projects() {
                   <span className="absolute left-1/2 top-1/2 z-10 hidden h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-brass bg-cream md:block" />
 
                   <motion.div
-                    initial={{ opacity: 0, x: fromLeft ? -40 : 40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className={fromLeft ? "md:order-1" : "md:order-2"}
                   >
@@ -49,11 +49,11 @@ export default function Projects() {
                   </motion.div>
 
                   <motion.div
-                    initial={{ opacity: 0, x: fromLeft ? 40 : -40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                    className={`rounded-2xl border hairline bg-cream-soft p-6 shadow-card sm:p-8 ${
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    className={`rounded-2xl border hairline bg-cream-soft p-5 sm:p-8 shadow-card ${
                       fromLeft ? "md:order-2" : "md:order-1"
                     }`}
                   >

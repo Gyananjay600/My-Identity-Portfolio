@@ -40,7 +40,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.6 }}
             className="space-y-4"
           >
@@ -118,7 +118,7 @@ export default function Contact() {
           <motion.form
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
             onSubmit={handleSubmit}
             className="space-y-4 rounded-3xl border hairline bg-cream-soft p-6 shadow-premium sm:p-8"
@@ -161,7 +161,7 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 placeholder="Tell me a bit about the role or project…"
-                className="mt-2 w-full resize-none rounded-xl border hairline bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink-faint focus:border-brass"
+                className="mt-2 w-full resize-none rounded-xl border hairline bg-cream px-4 py-3 text-base sm:text-sm text-ink placeholder:text-ink-faint focus:border-brass"
               />
             </div>
             <button
@@ -194,7 +194,7 @@ function Field({ label, name, value, onChange, placeholder, type = "text", requi
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="mt-2 w-full rounded-xl border hairline bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink-faint focus:border-brass"
+        className="mt-2 w-full rounded-xl border hairline bg-cream px-4 py-3 text-base sm:text-sm text-ink placeholder:text-ink-faint focus:border-brass"
       />
     </div>
   );

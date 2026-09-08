@@ -48,16 +48,16 @@ export default function TechStack() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          viewport={{ once: true, margin: "-30px" }}
+          className="mt-16 grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3"
         >
           {techStack.map((group) => (
             <motion.div
               key={group.group}
               variants={cardVariants}
-              whileHover={{ y: -8 }}
+              whileHover={{ y: -6 }}
               transition={{ duration: 0.35 }}
-              className="group relative overflow-hidden rounded-[28px] border border-brass/20 bg-[#FCF9F4] p-8 shadow-[0_10px_35px_rgba(23,51,47,0.06)] transition-all duration-500 hover:border-brass/50 hover:shadow-[0_25px_70px_rgba(197,160,89,0.18)]"
+              className="group relative overflow-hidden rounded-[24px] sm:rounded-[28px] border border-brass/20 bg-[#FCF9F4] p-6 sm:p-8 shadow-[0_10px_35px_rgba(23,51,47,0.06)] transition-all duration-500 hover:border-brass/50 hover:shadow-[0_25px_70px_rgba(197,160,89,0.18)]"
             >
               {/* Glow */}
               <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-brass/5 blur-3xl transition-all duration-500 group-hover:bg-brass/10" />

@@ -23,6 +23,12 @@ const achievements = [
 
 const certifications = [
   {
+    title: "MERN Stack Development",
+    issuer: "Qlith Innovation Pvt. Ltd.",
+    verifyLabel: "View Certificate",
+    href: "/assets/certificate/QIS0140.pdf",
+  },
+  {
     title: "DATA ANALYTICS WITH PYTHON",
     issuer: "Central Tool Room & Training Centre, Bhubaneswar",
     verifyLabel: "View Certificate",
@@ -60,7 +66,7 @@ export default function Achievements() {
               key={item.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={{ once: true, margin: "-30px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="rounded-2xl border hairline bg-cream-soft p-6 shadow-card"
             >
@@ -77,20 +83,22 @@ export default function Achievements() {
               key={cert.title}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={{ once: true, margin: "-30px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="flex items-center justify-between gap-4 rounded-2xl border hairline bg-cream-soft px-6 py-5 shadow-card"
+              className="flex flex-col justify-between gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card sm:flex-row sm:items-center sm:px-6"
             >
-              <div className="flex items-center gap-3">
-                <BadgeCheck size={20} className="shrink-0 text-brass" />
+              <div className="flex items-start gap-3">
+                <BadgeCheck size={20} className="mt-0.5 shrink-0 text-brass" />
                 <div>
-                  <h4 className="font-display text-sm font-semibold text-ink">{cert.title}</h4>
-                  <p className="text-xs text-ink-faint">{cert.issuer}</p>
+                  <h4 className="font-display text-sm font-semibold text-ink leading-snug">{cert.title}</h4>
+                  <p className="mt-0.5 text-xs text-ink-faint leading-relaxed">{cert.issuer}</p>
                 </div>
               </div>
               <a
                 href={cert.href}
-                className="shrink-0 rounded-full border hairline px-3 py-1.5 font-mono text-[0.68rem] text-ink-soft transition-colors hover:border-brass hover:text-brass"
+                target="_blank"
+                rel="noreferrer"
+                className="self-start shrink-0 rounded-full border hairline px-3.5 py-1.5 font-mono text-[0.68rem] text-ink-soft transition-colors hover:border-brass hover:text-brass sm:self-center"
               >
                 {cert.verifyLabel}
               </a>

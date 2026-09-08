@@ -5,6 +5,7 @@ export const experience = [
     org: "Qlith Innovation Pvt. Ltd.",
     description:
       "Built full-stack features with React (Vite), Node.js/Express and MongoDB, including JWT-based authentication flows.",
+    certificate: "/assets/certificate/QIS0140.pdf",
   },
   {
     year: "2026 — Present",

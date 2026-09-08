@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import SectionHeading from "./SectionHeading.jsx";
 import { experience } from "../data/experience.js";
 
@@ -15,7 +16,7 @@ export default function Experience() {
               key={item.title}
               initial={{ opacity: 0, x: -16 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={{ once: true, margin: "-30px" }}
               transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="relative mb-10 last:mb-0"
             >
@@ -24,6 +25,18 @@ export default function Experience() {
               <h3 className="mt-1 font-display text-xl font-semibold text-ink">{item.title}</h3>
               <p className="text-sm font-medium text-brass-dark">{item.org}</p>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-soft">{item.description}</p>
+              {item.certificate && (
+                <div className="mt-3">
+                  <a
+                    href={item.certificate}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full border hairline bg-cream-soft px-3.5 py-1 font-mono text-[0.7rem] text-ink-soft transition-colors hover:border-brass hover:text-brass"
+                  >
+                    <ExternalLink size={12} className="text-brass" /> View Internship Certificate (PDF)
+                  </a>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
