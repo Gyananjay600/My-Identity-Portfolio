@@ -13,7 +13,7 @@ export const projects = [
     stack: ["React", "Tailwind CSS", "Web Speech API", "react-i18next", "Node.js", "Express", "MySQL"],
     image: "/assets/images/projects/jaydurga-silpanusthana.png",
     github: "https://github.com/Gyananjay600/JayDurga_Silpanusthana_Platform",
-    live: "",
+    live: "https://jay-durga-silpanusthana-platform-du.vercel.app/",
     metrics: [
       { label: "Language", value: "Bilingual" },
       { label: "Voice AI", value: "Web Speech" },
@@ -28,7 +28,7 @@ export const projects = [
     stack: ["Spring Boot", "Spring AI", "Groq API", "Spring Security", "Thymeleaf", "Chart.js", "MySQL"],
     image: "/assets/images/projects/autoguard-ai.png",
     github: "https://github.com/Gyananjay600",
-    live: "",
+    live: "https://github.com/Gyananjay600", // Update with your deployment link anytime
     metrics: [
       { label: "JPA Entities", value: "7" },
       { label: "Roles", value: "3" },
@@ -43,7 +43,7 @@ export const projects = [
     stack: ["Spring Boot", "Spring Security", "JWT", "MySQL", "React"],
     image: "/assets/images/projects/blog-platform.png",
     github: "https://github.com/Gyananjay600",
-    live: "",
+    live: "https://github.com/Gyananjay600", // Update with your deployment link anytime
     metrics: [
       { label: "Auth", value: "JWT" },
       { label: "Type", value: "Full Stack" },
@@ -58,7 +58,7 @@ export const projects = [
     stack: ["React", "Vite", "Node.js", "Express", "Sequelize", "MySQL"],
     image: "/assets/images/projects/task_manager_app.png",
     github: "https://github.com/Gyananjay600",
-    live: "",
+    live: "https://github.com/Gyananjay600", // Update with your deployment link anytime
     metrics: [
       { label: "ORM", value: "Sequelize" },
       { label: "Type", value: "Full Stack" },
@@ -73,7 +73,7 @@ export const projects = [
     stack: ["React", "Tailwind CSS", "Framer Motion", "Three.js"],
     image: "/assets/images/projects/gyana-portfolio.png",
     github: "https://github.com/Gyananjay600",
-    live: "",
+    live: "https://my-identity-portfolio.vercel.app/",
     metrics: [
       { label: "Status", value: "Live" },
       { label: "Type", value: "Personal" },
