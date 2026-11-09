@@ -1,34 +1,64 @@
 'use client';
 
-import { motion } from "framer-motion";
-import { ExternalLink, Briefcase, GraduationCap, Sparkles, Calendar, Building2 } from "lucide-react";
+import { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { ExternalLink, Briefcase, GraduationCap, Sparkles, Calendar, Building2, FolderGit2, ArrowRight } from "lucide-react";
 import SectionHeading from "./SectionHeading.jsx";
-import FadeContent from "./FadeContent.jsx";
 import { experience } from "../data/experience.js";
 
-// Specific milestone icons and tech tags for each experience
+// Specific milestone metadata including projects shipped during each phase
 const experienceMeta = {
   "MERN Stack Intern": {
     icon: Briefcase,
     type: "Industry Internship",
     tech: ["React (Vite)", "Node.js", "Express", "MongoDB", "JWT Auth", "REST API"],
     badgeColor: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
+    showcaseProjects: [
+      { name: "Task Management System", link: "#projects", stack: "MERN Stack" },
+      { name: "Stateless JWT Auth Engine", link: "#projects", stack: "Node + React" },
+    ],
   },
   "B.Tech CSE, 7th Semester": {
     icon: GraduationCap,
     type: "Academic Foundation",
     tech: ["Java Architecture", "Spring Framework", "Distributed Systems", "Database Design"],
     badgeColor: "text-brass bg-brass/10 border-brass/20",
+    showcaseProjects: [
+      { name: "Auto Guard AI Vehicle Platform", link: "#projects", stack: "Spring AI + Groq" },
+      { name: "Core Java Concurrency & OOP Lab", link: "#achievements", stack: "Java 21" },
+    ],
   },
   "Independent Projects": {
     icon: Sparkles,
     type: "Production Engineering",
     tech: ["Spring Boot 3", "Spring AI", "Groq LLaMA 3", "Docker", "Microservices"],
     badgeColor: "text-sky-500 bg-sky-500/10 border-sky-500/20",
+    showcaseProjects: [
+      { name: "Jay Durga Silpanusthana Platform", link: "https://jay-durga-silpanusthana-platform-du.vercel.app/", external: true, stack: "Live on Vercel" },
+      { name: "AI-Integrated Developer Portfolio", link: "https://my-identity-portfolio.vercel.app/", external: true, stack: "Live on Vercel" },
+      { name: "Full-Stack Blog Platform", link: "#projects", stack: "Spring Boot + JWT" },
+    ],
   },
 };
 
 export default function Experience() {
+  const containerRef = useRef(null);
+
+  // Smooth scroll-driven line flow
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 75%", "end 75%"],
+  });
+
+  // Spring physics for slow, gentle flowing motion
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 45,
+    damping: 18,
+    restDelta: 0.001,
+  });
+
+  const lineHeight = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
+
   return (
     <section id="experience" className="relative py-16 sm:py-24 overflow-hidden">
       {/* Background Ambience */}
@@ -41,10 +71,16 @@ export default function Experience() {
           description="A chronological timeline of production internships, engineering coursework, and intensive full-stack systems building."
         />
 
-        {/* Modern Interactive Timeline */}
-        <div className="relative mt-16 pl-6 sm:pl-10">
-          {/* Animated gradient vertical line stem */}
-          <div className="absolute left-[11px] sm:left-[19px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-brass via-brass/40 to-line" />
+        {/* Interactive Timeline with Slowly Flowing Line */}
+        <div ref={containerRef} className="relative mt-16 pl-6 sm:pl-10">
+          {/* Base track line */}
+          <div className="absolute left-[11px] sm:left-[19px] top-6 bottom-6 w-[2px] bg-line/50 rounded-full" />
+
+          {/* Animated beam that flows slowly as you scroll */}
+          <motion.div
+            style={{ height: lineHeight }}
+            className="absolute left-[11px] sm:left-[19px] top-6 w-[2px] bg-gradient-to-b from-brass via-emerald-400 to-brass rounded-full shadow-[0_0_12px_rgba(217,169,75,0.7)] z-0"
+          />
 
           <div className="space-y-12">
             {experience.map((item, i) => {
@@ -53,11 +89,12 @@ export default function Experience() {
                 type: "Experience",
                 tech: [],
                 badgeColor: "text-brass bg-brass/10 border-brass/20",
+                showcaseProjects: [],
               };
               const IconComponent = meta.icon;
 
               return (
-                <div key={item.title} className="relative">
+                <div key={item.title} className="relative z-10">
                   {/* Glowing Milestone Node */}
                   <div className="absolute -left-6 sm:-left-10 top-6 flex items-center justify-center">
                     <span className="relative flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full bg-cream-soft border-2 border-brass shadow-md dark:bg-deep">
@@ -66,76 +103,99 @@ export default function Experience() {
                     </span>
                   </div>
 
-                  {/* FadeContent Card from React Bits */}
-                  <FadeContent
-                    blur={true}
-                    duration={800}
-                    delay={i * 120}
-                    displacement={20}
-                    className="w-full"
+                  {/* Milestone Card */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative rounded-3xl border hairline bg-cream-soft/95 dark:bg-[#111726]/95 backdrop-blur-xl p-6 sm:p-8 shadow-card transition-all duration-300 hover:border-brass/50 hover:shadow-premium"
                   >
-                    <div className="relative rounded-3xl border hairline bg-cream-soft/90 dark:bg-[#111726]/90 backdrop-blur-xl p-6 sm:p-8 shadow-card transition-all duration-300 hover:border-brass/50 hover:shadow-premium">
-                      {/* Top Header Row */}
-                      <div className="flex flex-wrap items-center justify-between gap-3 border-b hairline pb-4 mb-5">
-                        <div className="flex items-center gap-2">
-                          <span className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-0.5 font-mono text-[0.7rem] font-semibold ${meta.badgeColor}`}>
-                            <IconComponent size={13} />
-                            {meta.type}
-                          </span>
-                        </div>
-
-                        <div className="flex items-center gap-1.5 font-mono text-xs text-ink-faint">
-                          <Calendar size={13} className="text-brass" />
-                          <span>{item.year}</span>
-                        </div>
+                    {/* Top Header Row */}
+                    <div className="flex flex-wrap items-center justify-between gap-3 border-b hairline pb-4 mb-5">
+                      <div className="flex items-center gap-2">
+                        <span className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-0.5 font-mono text-[0.7rem] font-semibold ${meta.badgeColor}`}>
+                          <IconComponent size={13} />
+                          {meta.type}
+                        </span>
                       </div>
 
-                      {/* Main Title & Organization */}
-                      <div>
-                        <h3 className="font-display text-xl sm:text-2xl font-bold text-ink tracking-tight">
-                          {item.title}
-                        </h3>
+                      <div className="flex items-center gap-1.5 font-mono text-xs text-ink-faint">
+                        <Calendar size={13} className="text-brass" />
+                        <span>{item.year}</span>
+                      </div>
+                    </div>
 
-                        <div className="mt-1.5 flex items-center gap-1.5 font-mono text-xs sm:text-sm font-semibold text-brass">
-                          <Building2 size={14} className="shrink-0" />
-                          <span>{item.org}</span>
-                        </div>
+                    {/* Main Title & Organization */}
+                    <div>
+                      <h3 className="font-display text-xl sm:text-2xl font-bold text-ink tracking-tight">
+                        {item.title}
+                      </h3>
 
-                        <p className="mt-3 text-sm sm:text-[0.95rem] leading-relaxed text-ink-soft">
-                          {item.description}
-                        </p>
+                      <div className="mt-1.5 flex items-center gap-1.5 font-mono text-xs sm:text-sm font-semibold text-brass">
+                        <Building2 size={14} className="shrink-0" />
+                        <span>{item.org}</span>
                       </div>
 
-                      {/* Tech stack highlights */}
-                      {meta.tech.length > 0 && (
-                        <div className="mt-5 flex flex-wrap gap-2 pt-4 border-t hairline">
-                          {meta.tech.map((t) => (
-                            <span
-                              key={t}
-                              className="rounded-full border hairline bg-cream/70 dark:bg-deep/70 px-2.5 py-0.5 font-mono text-[0.68rem] text-ink-soft"
+                      <p className="mt-3 text-sm sm:text-[0.95rem] leading-relaxed text-ink-soft">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* Showcase Projects in Timeline */}
+                    {meta.showcaseProjects && meta.showcaseProjects.length > 0 && (
+                      <div className="mt-5 rounded-2xl border hairline bg-cream/60 dark:bg-deep/50 p-4">
+                        <div className="flex items-center gap-1.5 font-mono text-[0.7rem] font-semibold uppercase tracking-wider text-brass mb-2.5">
+                          <FolderGit2 size={13} />
+                          <span>Projects Shipped &amp; Systems Built:</span>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {meta.showcaseProjects.map((proj) => (
+                            <a
+                              key={proj.name}
+                              href={proj.link}
+                              target={proj.external ? "_blank" : "_self"}
+                              rel={proj.external ? "noreferrer" : ""}
+                              className="group inline-flex items-center gap-1.5 rounded-full border hairline bg-cream-soft px-3 py-1 font-mono text-xs text-ink transition-all hover:border-brass hover:text-brass shadow-xs"
                             >
-                              {t}
-                            </span>
+                              <span>{proj.name}</span>
+                              <span className="text-[0.62rem] text-brass/80 font-normal">({proj.stack})</span>
+                              <ArrowRight size={11} className="transition-transform group-hover:translate-x-0.5" />
+                            </a>
                           ))}
                         </div>
-                      )}
+                      </div>
+                    )}
 
-                      {/* Certificate Verification Button */}
-                      {item.certificate && (
-                        <div className="mt-5 pt-3">
-                          <a
-                            href={item.certificate}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="btn-silver-line group inline-flex items-center gap-2 rounded-full bg-deep px-4 py-2 font-mono text-xs text-cream-soft hover:bg-brass transition-all duration-300"
+                    {/* Tech stack highlights */}
+                    {meta.tech.length > 0 && (
+                      <div className="mt-5 flex flex-wrap gap-2 pt-4 border-t hairline">
+                        {meta.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="rounded-full border hairline bg-cream/70 dark:bg-deep/70 px-2.5 py-0.5 font-mono text-[0.68rem] text-ink-soft"
                           >
-                            <ExternalLink size={13} className="text-brass transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                            <span>View Internship Certificate (PDF)</span>
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  </FadeContent>
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Certificate Verification Button */}
+                    {item.certificate && (
+                      <div className="mt-5 pt-3">
+                        <a
+                          href={item.certificate}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn-silver-line group inline-flex items-center gap-2 rounded-full bg-deep px-4 py-2 font-mono text-xs text-cream-soft hover:bg-brass transition-all duration-300"
+                        >
+                          <ExternalLink size={13} className="text-brass transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                          <span>View Internship Certificate (PDF)</span>
+                        </a>
+                      </div>
+                    )}
+                  </motion.div>
                 </div>
               );
             })}

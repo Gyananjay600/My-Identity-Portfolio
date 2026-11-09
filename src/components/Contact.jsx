@@ -68,13 +68,43 @@ export default function Contact() {
               </div>
             </a>
 
-            <div className="flex items-center gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft shadow-sm">
-                <HiMapPin size={19} className="text-brass" />
-              </span>
-              <div>
-                <p className="section-label">Location</p>
-                <p className="font-display text-sm font-medium text-ink">{profile.location}</p>
+            {/* Location with Interactive Google Map for Infocity Square, Bhubaneswar */}
+            <div className="rounded-2xl border hairline bg-cream-soft p-5 shadow-card overflow-hidden">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft shadow-sm">
+                    <HiMapPin size={19} className="text-brass" />
+                  </span>
+                  <div>
+                    <p className="section-label !text-[0.68rem]">Location</p>
+                    <p className="font-display text-sm font-semibold text-ink">
+                      Infocity Square, Bhubaneswar
+                    </p>
+                    <p className="font-mono text-[0.68rem] text-ink-faint">
+                      Patia, Bhubaneswar, Odisha 751024
+                    </p>
+                  </div>
+                </div>
+
+                <a
+                  href="https://maps.google.com/?q=Infocity+Square,+Bhubaneswar,+Odisha"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-silver-line hidden sm:inline-flex items-center gap-1.5 rounded-full bg-deep px-3 py-1 font-mono text-[0.68rem] text-cream-soft hover:bg-brass transition-all duration-300"
+                >
+                  <span>Open Maps</span>
+                </a>
+              </div>
+
+              {/* Embedded Google Map */}
+              <div className="mt-3 overflow-hidden rounded-xl border hairline bg-cream shadow-inner">
+                <iframe
+                  title="Infocity Square, Bhubaneswar Location Map"
+                  src="https://maps.google.com/maps?q=Infocity+Square,+Patia,+Bhubaneswar,+Odisha&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  className="w-full h-36 border-0 filter contrast-[1.05] opacity-90 transition-opacity hover:opacity-100"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
 
@@ -126,7 +156,7 @@ export default function Contact() {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                placeholder="Jane Doe"
+                placeholder="Gyananjay Sahoo"
                 required
               />
               <Field
@@ -135,7 +165,7 @@ export default function Contact() {
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="jane@company.com"
+                placeholder="gyananjaysahoo6@gmail.com"
                 required
               />
             </div>
