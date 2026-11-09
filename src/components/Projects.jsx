@@ -1,11 +1,13 @@
 'use client';
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub } from "react-icons/fa6";
-import { FiExternalLink, FiGlobe, FiLayers } from "react-icons/fi";
+import { FiExternalLink, FiGlobe, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { HiSparkles } from "react-icons/hi2";
 import SectionHeading from "./SectionHeading.jsx";
 import { projects } from "../data/projects.js";
+import "./Projects3DDeck.css";
 
 // Distinct bright tech colors matching the reference design (Python, PyTorch, Computer Vision style)
 const techColorMap = {
@@ -30,41 +32,111 @@ const techColorMap = {
 };
 
 export default function Projects() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const count = projects.length;
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? count - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === count - 1 ? 0 : prev + 1));
+  };
+
+  // Keyboard arrow navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <section id="projects" className="relative py-16 sm:py-24 overflow-hidden">
       {/* Background Ambience */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.06),transparent_70%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.08),transparent_70%)]" />
 
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading
-          eyebrow="04 · Featured Work"
-          title="Engineered Systems."
-          description="A showcase of full-stack Spring Boot, React, and targeted AI applications, stacked with deep architecture details."
-        />
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <SectionHeading
+            eyebrow="04 · Featured Work"
+            title="Engineered Systems."
+            description="A grand 3D showcase of full-stack Spring Boot, React, and targeted AI applications, layered in depth."
+          />
 
-        {/* 3D Stacking Deck Container matching the reference design */}
-        <div className="relative mt-16 pb-28 space-y-8 sm:space-y-12">
-          {projects.map((project, i) => {
-            const indexStr = String(i + 1).padStart(2, "0");
-            // Progressive top offset for the visible stacking tabs (as seen in the reference image)
-            const topOffset = `calc(5rem + ${i * 2.2}rem)`;
-            const isVercelLive = project.live && project.live.includes("vercel.app");
+          {/* Quick Counter Pill */}
+          <div className="hidden sm:flex items-center gap-2 mb-2 font-mono text-xs text-ink-faint">
+            <span className="font-bold text-ink">
+              {String(currentIndex + 1).padStart(2, "0")}
+            </span>
+            <span>/</span>
+            <span>{String(count).padStart(2, "0")} Systems</span>
+          </div>
+        </div>
 
-            return (
-              <div
-                key={project.id}
-                style={{ top: topOffset }}
-                className="sticky z-[10]"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 35 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                  className="group relative rounded-3xl sm:rounded-[32px] border border-indigo-500/25 dark:border-indigo-400/20 bg-[#0B0F19] text-white p-6 sm:p-9 md:p-11 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden transition-all duration-300 hover:border-indigo-400/50"
+        {/* Grand 3D Depth Deck Container */}
+        <div className="projects-deck-wrapper mt-10">
+          <div className="projects-deck-stage">
+            {projects.map((project, i) => {
+              // Calculate relative wrapped offset for circular 3D depth layering
+              let diff = (i - currentIndex + count) % count;
+              if (diff > count / 2) diff -= count;
+
+              const isActive = diff === 0;
+              const isLeft = diff === -1;
+              const isRight = diff === 1;
+              const isVisible = Math.abs(diff) <= 1;
+
+              // 3D transform calculations for expansive depth stack
+              let translateX = "0%";
+              let rotateY = 0;
+              let scale = 1;
+              let zIndex = 30;
+              let opacity = 1;
+
+              if (isLeft) {
+                translateX = "-38%";
+                rotateY = 16;
+                scale = 0.88;
+                zIndex = 20;
+                opacity = 0.6;
+              } else if (isRight) {
+                translateX = "38%";
+                rotateY = -16;
+                scale = 0.88;
+                zIndex = 20;
+                opacity = 0.6;
+              } else if (!isActive) {
+                translateX = diff > 0 ? "70%" : "-70%";
+                rotateY = diff > 0 ? -28 : 28;
+                scale = 0.75;
+                zIndex = 10;
+                opacity = 0;
+              }
+
+              const indexStr = String(i + 1).padStart(2, "0");
+              const isVercelLive = project.live && project.live.includes("vercel.app");
+
+              return (
+                <div
+                  key={project.id}
+                  onClick={() => {
+                    if (isLeft) handlePrev();
+                    if (isRight) handleNext();
+                  }}
+                  style={{
+                    transform: `translateX(${translateX}) scale(${scale}) rotateY(${rotateY}deg)`,
+                    zIndex,
+                    opacity,
+                    cursor: isActive ? "default" : "pointer",
+                    pointerEvents: isVisible ? "auto" : "none",
+                  }}
+                  className="projects-deck-card border border-indigo-500/30 dark:border-indigo-400/25 bg-[#0B0F19] text-white p-6 sm:p-9 md:p-11 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.85)] flex flex-col justify-between overflow-hidden"
                 >
-                  {/* Subtle top sheen line */}
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-400/40 to-transparent" />
+                  {/* Top neon sheen line */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-400/50 to-transparent" />
 
                   {/* Card Content Grid */}
                   <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
@@ -73,7 +145,7 @@ export default function Projects() {
                       <div>
                         {/* Big Card Number matching reference (01, 02, 03...) */}
                         <div className="flex items-center justify-between mb-2">
-                          <span className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-indigo-400/75 dark:text-indigo-400/80 tracking-tight">
+                          <span className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-indigo-400/80 tracking-tight">
                             {indexStr}
                           </span>
 
@@ -100,7 +172,7 @@ export default function Projects() {
                           {project.description}
                         </p>
 
-                        {/* Distinct Colored Tech Tags matching reference (e.g. Python, PyTorch, Computer Vision) */}
+                        {/* Distinct Colored Tech Tags matching reference (Python, PyTorch style) */}
                         <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
                           {project.stack.map((tech) => {
                             const colorClass = techColorMap[tech] || "text-brass";
@@ -115,7 +187,7 @@ export default function Projects() {
                           })}
                         </div>
 
-                        {/* Architectural Metrics if available */}
+                        {/* Architectural Metrics */}
                         {project.metrics && project.metrics.length > 0 && (
                           <div className="mt-5 flex flex-wrap gap-4 pt-4 border-t border-slate-800">
                             {project.metrics.map((m) => (
@@ -139,6 +211,7 @@ export default function Projects() {
                           href={project.github}
                           target="_blank"
                           rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                           aria-label={`${project.title} GitHub Source Code`}
                           title="View Source on GitHub"
                           className="btn-silver-line group flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900/90 text-white shadow-md hover:bg-slate-800 transition-all duration-300 hover:scale-110"
@@ -151,6 +224,7 @@ export default function Projects() {
                           href={project.live || "#"}
                           target="_blank"
                           rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                           className="btn-silver-line group inline-flex items-center gap-2 rounded-full bg-deep px-5 py-2.5 font-mono text-xs sm:text-sm font-semibold text-white shadow-card hover:bg-brass transition-all duration-300"
                         >
                           <FiGlobe size={15} className="text-brass-light transition-transform duration-300 group-hover:rotate-12" />
@@ -175,15 +249,49 @@ export default function Projects() {
                             No preview available
                           </div>
                         )}
-                        {/* Soft gradient glass reflection */}
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              </div>
-            );
-          })}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* 3D Deck Controls (Arrows & Dot Indicators) */}
+          <div className="mt-8 flex items-center justify-center gap-4">
+            <button
+              onClick={handlePrev}
+              aria-label="Previous Project"
+              className="btn-silver-line flex h-11 w-11 items-center justify-center rounded-full bg-cream-soft text-ink shadow-sm transition-all duration-300 hover:text-brass hover:scale-110"
+            >
+              <FiChevronLeft size={20} />
+            </button>
+
+            {/* Indicator dots */}
+            <div className="flex items-center gap-2">
+              {projects.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  aria-label={`Go to project ${idx + 1}`}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    idx === currentIndex
+                      ? "w-8 bg-brass"
+                      : "w-2.5 bg-line hover:bg-ink-faint"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={handleNext}
+              aria-label="Next Project"
+              className="btn-silver-line flex h-11 w-11 items-center justify-center rounded-full bg-cream-soft text-ink shadow-sm transition-all duration-300 hover:text-brass hover:scale-110"
+            >
+              <FiChevronRight size={20} />
+            </button>
+          </div>
         </div>
       </div>
     </section>

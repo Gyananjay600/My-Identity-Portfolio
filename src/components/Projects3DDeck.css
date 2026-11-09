@@ -1,0 +1,38 @@
+/* Grand 3D Project Deck Styling */
+.projects-deck-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 32px 0 20px;
+  perspective: 1600px;
+  overflow: visible;
+}
+
+.projects-deck-stage {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 768px) {
+  .projects-deck-stage {
+    min-height: 640px;
+  }
+}
+
+.projects-deck-card {
+  position: absolute;
+  width: min(96%, 980px);
+  min-height: 460px;
+  border-radius: 32px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease;
+  user-select: none;
+}
+
