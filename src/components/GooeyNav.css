@@ -1,0 +1,93 @@
+/* React Bits Gooey Nav Styling */
+.gooey-nav-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gooey-filter-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.gooey-nav-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  border-radius: 9999px;
+  gap: 2px;
+}
+
+/* Layer with gooey liquid filter applied to pill and droplets */
+.gooey-liquid-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  filter: url(#gooey-nav-filter);
+  z-index: 1;
+}
+
+.gooey-pill {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 9999px;
+  background-color: var(--color-deep);
+  transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1),
+              width 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dark .gooey-pill {
+  background-color: var(--color-brass);
+}
+
+.gooey-droplet {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--color-deep);
+  pointer-events: none;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+.dark .gooey-droplet {
+  background-color: var(--color-brass);
+}
+
+.gooey-nav-item {
+  position: relative;
+  z-index: 2;
+}
+
+.gooey-nav-link {
+  display: block;
+  padding: 6px 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 9999px;
+  transition: color 0.25s ease;
+  color: var(--color-ink-soft);
+}
+
+.gooey-nav-link:hover {
+  color: var(--color-ink);
+}
+
+.gooey-nav-item.active .gooey-nav-link {
+  color: var(--color-cream-soft);
+  font-weight: 500;
+}
+
+.dark .gooey-nav-item.active .gooey-nav-link {
+  color: #0B0F17;
+  font-weight: 600;
+}
+

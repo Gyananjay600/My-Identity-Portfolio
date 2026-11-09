@@ -1,3 +1,4 @@
+import { ThemeProvider } from "./context/ThemeContext.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
@@ -12,21 +13,23 @@ import Footer from "./components/Footer.jsx";
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-cream text-ink">
-      <div className="grain-overlay" aria-hidden="true" />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <TechStack />
-        <Projects />
-        <Achievements />
-        <Education />
-        <Resume />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="relative min-h-screen bg-cream text-ink transition-colors duration-300">
+        <div className="grain-overlay" aria-hidden="true" />
+        <Navbar />
+        <main className="relative">
+          <Hero />
+          <About />
+          <Experience />
+          <TechStack />
+          <Projects />
+          <Achievements />
+          <Education />
+          <Resume />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }

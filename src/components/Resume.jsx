@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, Eye, FileText } from "lucide-react";
+import { FiDownload, FiEye, FiFileText } from "react-icons/fi";
 import SectionHeading from "./SectionHeading.jsx";
 import { profile } from "../data/profile.js";
 
@@ -14,10 +14,10 @@ export default function Resume() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-30px" }}
           transition={{ duration: 0.6 }}
-          className="mt-12 flex flex-col items-center gap-6 rounded-3xl border hairline bg-cream-soft p-8 text-center shadow-premium sm:p-10"
+          className="mt-12 flex flex-col items-center gap-6 rounded-3xl border hairline bg-cream-soft p-8 text-center shadow-premium sm:p-10 transition-colors duration-300"
         >
-          <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-deep text-cream-soft">
-            <FileText size={28} />
+          <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-deep text-cream-soft shadow-card">
+            <FiFileText size={28} />
           </span>
           <div>
             <h3 className="font-display text-xl font-semibold text-ink">Gyananjay Sahoo — Resume</h3>
@@ -30,17 +30,19 @@ export default function Resume() {
             <a
               href={profile.resumePath}
               download={profile.resumeDownloadName || "FinalResume(Gyananjay).pdf"}
-              className="inline-flex items-center gap-2 rounded-full bg-deep px-6 py-3 font-mono text-sm text-cream-soft transition-transform hover:-translate-y-0.5 hover:bg-brass"
+              className="group inline-flex items-center gap-2 rounded-full bg-deep px-6 py-3 font-mono text-sm text-cream-soft shadow-premium transition-all duration-300 hover:-translate-y-0.5 hover:bg-brass hover:shadow-brass/30"
             >
-              <Download size={16} /> Download Resume
+              <FiDownload size={16} className="transition-transform duration-300 group-hover:translate-y-0.5" />
+              <span>Download Resume</span>
             </a>
             <a
               href={profile.resumePath}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border hairline px-6 py-3 font-mono text-sm text-ink transition-transform hover:-translate-y-0.5 hover:border-brass"
+              className="group inline-flex items-center gap-2 rounded-full border hairline bg-cream px-6 py-3 font-mono text-sm text-ink shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brass hover:text-brass"
             >
-              <Eye size={16} /> Preview
+              <FiEye size={16} className="transition-transform duration-300 group-hover:scale-110" />
+              <span>Preview</span>
             </a>
           </div>
         </motion.div>

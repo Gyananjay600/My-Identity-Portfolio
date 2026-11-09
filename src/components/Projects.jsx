@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { FaGithub } from "react-icons/fa6";
+import { FiExternalLink } from "react-icons/fi";
 import SectionHeading from "./SectionHeading.jsx";
 import LaptopFrame from "./LaptopFrame.jsx";
 import { projects } from "../data/projects.js";
@@ -75,23 +76,25 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    <div className="mt-5 flex items-center gap-4">
+                    <div className="mt-5 flex flex-wrap items-center gap-3">
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 font-mono text-xs text-ink transition-colors hover:text-brass"
+                        className="group inline-flex items-center gap-2 rounded-xl border hairline bg-cream-soft px-3.5 py-2 font-mono text-xs text-ink shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brass hover:text-brass hover:shadow-card"
                       >
-                        <Github size={15} /> Code
+                        <FaGithub size={15} className="transition-transform duration-300 group-hover:scale-115" />
+                        <span>Source Code</span>
                       </a>
                       {project.live && (
                         <a
                           href={project.live}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 font-mono text-xs text-ink transition-colors hover:text-brass"
+                          className="group inline-flex items-center gap-2 rounded-xl bg-deep px-3.5 py-2 font-mono text-xs text-cream-soft shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-brass hover:shadow-card"
                         >
-                          <ExternalLink size={15} /> Live
+                          <FiExternalLink size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                          <span>Live Demo</span>
                         </a>
                       )}
                     </div>

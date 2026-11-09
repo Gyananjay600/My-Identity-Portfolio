@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageCircle } from "lucide-react";
+import { HiEnvelope, HiPaperAirplane, HiMapPin, HiPhone } from "react-icons/hi2";
+import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa6";
 import SectionHeading from "./SectionHeading.jsx";
 import { profile } from "../data/profile.js";
 
@@ -46,14 +47,14 @@ export default function Contact() {
           >
             <a
               href={`mailto:${profile.email}`}
-              className="flex items-center gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card transition-all hover:-translate-y-0.5 hover:border-brass"
+              className="group flex items-center gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-brass hover:shadow-premium"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft">
-                <Mail size={18} />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft shadow-sm transition-transform duration-300 group-hover:scale-110">
+                <HiEnvelope size={19} />
               </span>
               <div>
                 <p className="section-label">Email</p>
-                <p className="font-display text-sm font-medium text-ink">{profile.email}</p>
+                <p className="font-display text-sm font-medium text-ink transition-colors group-hover:text-brass">{profile.email}</p>
               </div>
             </a>
 
@@ -61,20 +62,20 @@ export default function Contact() {
               href={whatsappHref}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card transition-all hover:-translate-y-0.5 hover:border-brass"
+              className="group flex items-center gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-brass hover:shadow-premium"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#25D366] text-white">
-                <MessageCircle size={18} />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#25D366] text-white shadow-sm transition-transform duration-300 group-hover:scale-110">
+                <FaWhatsapp size={20} />
               </span>
               <div>
                 <p className="section-label">WhatsApp</p>
-                <p className="font-display text-sm font-medium text-ink">{profile.phone}</p>
+                <p className="font-display text-sm font-medium text-ink transition-colors group-hover:text-brass">{profile.phone}</p>
               </div>
             </a>
 
             <div className="flex items-center gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft">
-                <Phone size={18} />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft shadow-sm">
+                <HiPhone size={19} />
               </span>
               <div>
                 <p className="section-label">Phone</p>
@@ -83,8 +84,8 @@ export default function Contact() {
             </div>
 
             <div className="flex items-center gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft">
-                <MapPin size={18} />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft shadow-sm">
+                <HiMapPin size={19} />
               </span>
               <div>
                 <p className="section-label">Location</p>
@@ -97,19 +98,19 @@ export default function Contact() {
                 href={profile.social.github}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="GitHub"
-                className="flex h-11 w-11 items-center justify-center rounded-full border hairline bg-cream-soft text-ink-soft transition-colors hover:border-brass hover:text-brass"
+                aria-label="GitHub Profile"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border hairline bg-cream-soft text-ink shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brass hover:text-brass hover:shadow-card"
               >
-                <Github size={18} />
+                <FaGithub size={18} />
               </a>
               <a
                 href={profile.social.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="LinkedIn"
-                className="flex h-11 w-11 items-center justify-center rounded-full border hairline bg-cream-soft text-ink-soft transition-colors hover:border-brass hover:text-brass"
+                aria-label="LinkedIn Profile"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border hairline bg-cream-soft text-ink shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brass hover:text-brass hover:shadow-card"
               >
-                <Linkedin size={18} />
+                <FaLinkedinIn size={18} />
               </a>
             </div>
           </motion.div>
@@ -166,9 +167,9 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-deep px-6 py-3 font-mono text-sm text-cream-soft transition-transform hover:-translate-y-0.5 hover:bg-brass sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-deep px-6 py-3 font-mono text-sm text-cream-soft shadow-premium transition-all duration-300 hover:-translate-y-0.5 hover:bg-brass hover:shadow-brass/25 sm:w-auto"
             >
-              <Send size={15} /> Send Message
+              <HiPaperAirplane size={15} className="rotate-45" /> Send Message
             </button>
             <p className="text-xs text-ink-faint">
               Opens your email app with this message pre-filled and addressed to {profile.email}.
