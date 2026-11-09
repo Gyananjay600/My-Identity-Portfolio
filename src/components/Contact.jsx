@@ -68,43 +68,36 @@ export default function Contact() {
               </div>
             </a>
 
-            {/* Location with Interactive Google Map for Infocity Square, Bhubaneswar */}
-            <div className="rounded-2xl border hairline bg-cream-soft p-5 shadow-card overflow-hidden">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft shadow-sm">
-                    <HiMapPin size={19} className="text-brass" />
+            {/* Minimalist Premium Location Card with BIG Display Letters */}
+            <div className="rounded-3xl border hairline bg-cream-soft/95 dark:bg-[#111726]/95 p-6 sm:p-7 shadow-card relative overflow-hidden transition-all duration-300 hover:border-brass">
+              {/* Top Meta Header */}
+              <div className="flex items-center justify-between border-b hairline pb-3 mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
                   </span>
-                  <div>
-                    <p className="section-label !text-[0.68rem]">Location</p>
-                    <p className="font-display text-sm font-semibold text-ink">
-                      Infocity Square, Bhubaneswar
-                    </p>
-                    <p className="font-mono text-[0.68rem] text-ink-faint">
-                      Patia, Bhubaneswar, Odisha 751024
-                    </p>
-                  </div>
+                  <span className="font-mono text-[0.68rem] uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-semibold">
+                    Open to Work • Worldwide
+                  </span>
                 </div>
 
-                <a
-                  href="https://maps.google.com/?q=Infocity+Square,+Bhubaneswar,+Odisha"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-silver-line hidden sm:inline-flex items-center gap-1.5 rounded-full bg-deep px-3 py-1 font-mono text-[0.68rem] text-cream-soft hover:bg-brass transition-all duration-300"
-                >
-                  <span>Open Maps</span>
-                </a>
+                <span className="rounded-full border hairline bg-cream/80 dark:bg-deep/80 px-2.5 py-0.5 font-mono text-[0.68rem] font-bold text-brass">
+                  BBI • IST (UTC+5:30)
+                </span>
               </div>
 
-              {/* Embedded Google Map */}
-              <div className="mt-3 overflow-hidden rounded-xl border hairline bg-cream shadow-inner">
-                <iframe
-                  title="Infocity Square, Bhubaneswar Location Map"
-                  src="https://maps.google.com/maps?q=Infocity+Square,+Patia,+Bhubaneswar,+Odisha&t=&z=14&ie=UTF8&iwloc=&output=embed"
-                  className="w-full h-36 border-0 filter contrast-[1.05] opacity-90 transition-opacity hover:opacity-100"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+              {/* Big Bold Location Display */}
+              <div>
+                <span className="section-label !text-[0.66rem]">Current Base</span>
+                <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-black text-ink tracking-tight mt-1">
+                  BHUBANESWAR
+                </h3>
+                <div className="mt-2 flex flex-wrap items-center gap-2 font-mono text-xs text-brass font-semibold uppercase">
+                  <span>ODISHA, INDIA</span>
+                  <span className="text-ink-faint">•</span>
+                  <span className="text-ink-soft tracking-wider">20.2961° N, 85.8245° E</span>
+                </div>
               </div>
             </div>
 
@@ -156,7 +149,7 @@ export default function Contact() {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                placeholder="Gyananjay Sahoo"
+                placeholder="Your name "
                 required
               />
               <Field
@@ -165,7 +158,7 @@ export default function Contact() {
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="gyananjaysahoo6@gmail.com"
+                placeholder="yourname@gmail.com"
                 required
               />
             </div>

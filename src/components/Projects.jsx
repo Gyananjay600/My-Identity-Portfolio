@@ -2,50 +2,52 @@
 
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa6";
-import { FiExternalLink, FiGlobe, FiCode, FiCheckCircle } from "react-icons/fi";
-import { HiSparkles, HiServerStack } from "react-icons/hi2";
+import { FiExternalLink, FiGlobe, FiLayers } from "react-icons/fi";
+import { HiSparkles } from "react-icons/hi2";
 import SectionHeading from "./SectionHeading.jsx";
-import LaptopFrame from "./LaptopFrame.jsx";
 import { projects } from "../data/projects.js";
+
+// Distinct bright tech colors matching the reference design (Python, PyTorch, Computer Vision style)
+const techColorMap = {
+  React: "text-[#61DAFB]",
+  "Tailwind CSS": "text-[#38BDF8]",
+  "Web Speech API": "text-[#F472B6]",
+  "react-i18next": "text-[#A78BFA]",
+  "Node.js": "text-[#4ADE80]",
+  Express: "text-[#E2E8F0]",
+  MySQL: "text-[#38BDF8]",
+  "Spring Boot": "text-[#6DB33F]",
+  "Spring AI": "text-[#C084FC]",
+  "Groq API": "text-[#FB923C]",
+  "Spring Security": "text-[#34D399]",
+  Thymeleaf: "text-[#22C55E]",
+  "Chart.js": "text-[#F43F5E]",
+  JWT: "text-[#FB7185]",
+  Vite: "text-[#C084FC]",
+  Sequelize: "text-[#38BDF8]",
+  "Framer Motion": "text-[#F472B6]",
+  "Three.js": "text-[#FBBF24]",
+};
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-16 sm:py-24">
+    <section id="projects" className="relative py-16 sm:py-24 overflow-hidden">
       {/* Background Ambience */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(185,133,46,0.06),transparent_70%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.06),transparent_70%)]" />
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="04 · Featured Work"
-          title="Projects in depth."
-          description="Every project below is built to production standards — real databases, stateless authentication, AI integrations, and full source code."
+          title="Engineered Systems."
+          description="A showcase of full-stack Spring Boot, React, and targeted AI applications, stacked with deep architecture details."
         />
 
-        {/* Narrative Architectural Introduction */}
-        <div className="mt-8 rounded-2xl border hairline bg-cream-soft/70 dark:bg-[#111726]/70 p-5 sm:p-6 backdrop-blur-sm shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft shadow-xs">
-              <HiServerStack size={20} className="text-brass" />
-            </span>
-            <div>
-              <p className="font-display text-sm sm:text-base font-bold text-ink">
-                Full-Stack Systems Architecture Showcase
-              </p>
-              <p className="font-mono text-xs text-ink-soft">
-                Explore the engineering details, database models, and live deployments stacked below.
-              </p>
-            </div>
-          </div>
-          <span className="inline-flex items-center gap-1.5 self-start sm:self-center font-mono text-xs text-brass font-semibold">
-            <HiSparkles size={14} /> Scroll to Stack Cards
-          </span>
-        </div>
-
-        {/* Sticky Scroll Stack Container */}
-        <div className="relative mt-12 pb-24 space-y-12 sm:space-y-16">
+        {/* 3D Stacking Deck Container matching the reference design */}
+        <div className="relative mt-16 pb-28 space-y-8 sm:space-y-12">
           {projects.map((project, i) => {
-            // Progressive top offset for the sticky stack effect
-            const topOffset = `calc(4.5rem + ${i * 1.5}rem)`;
+            const indexStr = String(i + 1).padStart(2, "0");
+            // Progressive top offset for the visible stacking tabs (as seen in the reference image)
+            const topOffset = `calc(5rem + ${i * 2.2}rem)`;
             const isVercelLive = project.live && project.live.includes("vercel.app");
 
             return (
@@ -55,84 +57,73 @@ export default function Projects() {
                 className="sticky z-[10]"
               >
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 35 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative rounded-3xl border hairline bg-cream-soft/95 dark:bg-[#111726]/95 backdrop-blur-xl p-6 sm:p-8 md:p-10 shadow-[0_-12px_40px_-5px_rgba(0,0,0,0.15)] dark:shadow-[0_-12px_40px_-5px_rgba(0,0,0,0.55)] overflow-hidden transition-all duration-300 hover:border-brass/50"
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  className="group relative rounded-3xl sm:rounded-[32px] border border-indigo-500/25 dark:border-indigo-400/20 bg-[#0B0F19] text-white p-6 sm:p-9 md:p-11 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden transition-all duration-300 hover:border-indigo-400/50"
                 >
-                  {/* Subtle decorative gradient glow behind card */}
-                  <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brass/10 blur-3xl" />
-
-                  {/* Card Header Bar */}
-                  <div className="flex items-center justify-between border-b hairline pb-4 mb-6">
-                    <div className="flex items-center gap-2">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-deep text-cream-soft font-mono text-xs font-bold shadow-sm">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="font-mono text-xs text-ink-faint">
-                        / {String(projects.length).padStart(2, "0")} System
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      {isVercelLive ? (
-                        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-mono text-[0.68rem] font-semibold text-emerald-600 dark:text-emerald-400">
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                          Live on Vercel
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-1.5 rounded-full border hairline bg-cream/70 dark:bg-deep/70 px-3 py-1 font-mono text-[0.68rem] text-ink-soft">
-                          <span className="h-1.5 w-1.5 rounded-full bg-brass animate-pulse" />
-                          Production Code
-                        </span>
-                      )}
-                    </div>
-                  </div>
+                  {/* Subtle top sheen line */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-400/40 to-transparent" />
 
                   {/* Card Content Grid */}
                   <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
-                    {/* Left: Project Details & Story (7 Cols) */}
-                    <div className="lg:col-span-7 flex flex-col justify-between">
+                    {/* Left Column: Number, Title, Description, Colored Tech Tags & Actions (7 Cols) */}
+                    <div className="lg:col-span-7 flex flex-col justify-between order-2 lg:order-1">
                       <div>
-                        <h3 className="font-display text-2xl sm:text-3xl font-bold text-ink tracking-tight">
+                        {/* Big Card Number matching reference (01, 02, 03...) */}
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-indigo-400/75 dark:text-indigo-400/80 tracking-tight">
+                            {indexStr}
+                          </span>
+
+                          {isVercelLive ? (
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-mono text-[0.68rem] font-semibold text-emerald-400">
+                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                              Live Deployment
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700/60 bg-slate-800/50 px-3 py-1 font-mono text-[0.68rem] text-slate-300">
+                              <span className="h-1.5 w-1.5 rounded-full bg-brass animate-pulse" />
+                              Production Code
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Project Title */}
+                        <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-snug">
                           {project.title}
                         </h3>
-                        <p className="mt-1.5 font-mono text-xs sm:text-sm font-semibold text-brass">
-                          {project.tagline}
+
+                        {/* Concise Project Description */}
+                        <p className="mt-3 text-sm sm:text-[0.98rem] leading-relaxed text-slate-300 max-w-xl font-normal">
+                          {project.description}
                         </p>
 
-                        {/* Architectural description text */}
-                        <div className="mt-4 rounded-2xl bg-cream/50 dark:bg-deep/40 p-4 border hairline">
-                          <p className="text-xs font-mono uppercase tracking-wider text-brass font-semibold mb-1">
-                            Architecture &amp; Engineering:
-                          </p>
-                          <p className="text-sm sm:text-[0.93rem] leading-relaxed text-ink-soft">
-                            {project.description}
-                          </p>
+                        {/* Distinct Colored Tech Tags matching reference (e.g. Python, PyTorch, Computer Vision) */}
+                        <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+                          {project.stack.map((tech) => {
+                            const colorClass = techColorMap[tech] || "text-brass";
+                            return (
+                              <span
+                                key={tech}
+                                className={`font-mono text-xs sm:text-sm font-bold tracking-wide ${colorClass} transition-transform hover:scale-105`}
+                              >
+                                {tech}
+                              </span>
+                            );
+                          })}
                         </div>
 
-                        {/* Tech Stack Pills */}
-                        <div className="mt-5 flex flex-wrap gap-2">
-                          {project.stack.map((s) => (
-                            <span
-                              key={s}
-                              className="rounded-full border hairline bg-cream/80 dark:bg-[#172033]/80 px-3 py-1 font-mono text-[0.7rem] text-ink-soft transition-colors hover:border-brass hover:text-ink"
-                            >
-                              {s}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* Key Metrics / Highlights */}
+                        {/* Architectural Metrics if available */}
                         {project.metrics && project.metrics.length > 0 && (
-                          <div className="mt-5 flex flex-wrap gap-4 pt-4 border-t hairline">
+                          <div className="mt-5 flex flex-wrap gap-4 pt-4 border-t border-slate-800">
                             {project.metrics.map((m) => (
                               <div key={m.label} className="flex items-baseline gap-2">
-                                <span className="font-mono text-[0.68rem] uppercase tracking-wider text-ink-faint">
+                                <span className="font-mono text-[0.68rem] uppercase tracking-wider text-slate-400">
                                   {m.label}:
                                 </span>
-                                <span className="font-mono text-xs font-bold text-ink">
+                                <span className="font-mono text-xs font-bold text-white">
                                   {m.value}
                                 </span>
                               </div>
@@ -141,37 +132,51 @@ export default function Projects() {
                         )}
                       </div>
 
-                      {/* Action Buttons: Both Source Code and Live Demo */}
+                      {/* Action Buttons: GitHub Icon & Live Demo */}
                       <div className="mt-7 flex flex-wrap items-center gap-3">
-                        {/* Live Demo Link Button */}
-                        <a
-                          href={project.live || "#"}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="btn-silver-line group inline-flex items-center gap-2 rounded-full bg-brass px-5 py-2.5 font-mono text-xs sm:text-sm font-semibold text-cream-soft hover:bg-brass-dark transition-all duration-300 shadow-md"
-                        >
-                          <FiGlobe size={15} className="transition-transform duration-300 group-hover:rotate-12" />
-                          <span>{isVercelLive ? "Visit Live Site" : "Live Demo"}</span>
-                          <FiExternalLink size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        </a>
-
-                        {/* GitHub Source Code Button */}
+                        {/* GitHub Source Code Icon Button */}
                         <a
                           href={project.github}
                           target="_blank"
                           rel="noreferrer"
-                          className="btn-silver-line group inline-flex items-center gap-2 rounded-full bg-deep px-5 py-2.5 font-mono text-xs sm:text-sm text-cream-soft hover:bg-brass transition-all duration-300"
+                          aria-label={`${project.title} GitHub Source Code`}
+                          title="View Source on GitHub"
+                          className="btn-silver-line group flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900/90 text-white shadow-md hover:bg-slate-800 transition-all duration-300 hover:scale-110"
                         >
-                          <FaGithub size={15} className="text-white transition-transform duration-300 group-hover:rotate-12" />
-                          <span>View Source</span>
+                          <FaGithub size={20} className="text-white transition-transform duration-300 group-hover:rotate-12" />
+                        </a>
+
+                        {/* Live Site / Live Demo Button */}
+                        <a
+                          href={project.live || "#"}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn-silver-line group inline-flex items-center gap-2 rounded-full bg-deep px-5 py-2.5 font-mono text-xs sm:text-sm font-semibold text-white shadow-card hover:bg-brass transition-all duration-300"
+                        >
+                          <FiGlobe size={15} className="text-brass-light transition-transform duration-300 group-hover:rotate-12" />
+                          <span>{isVercelLive ? "Visit Live Site" : "Live Demo"}</span>
+                          <FiExternalLink size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         </a>
                       </div>
                     </div>
 
-                    {/* Right: Mockup Preview (5 Cols) */}
-                    <div className="lg:col-span-5 flex items-center justify-center">
-                      <div className="w-full transform transition-transform duration-500 hover:scale-[1.02]">
-                        <LaptopFrame image={project.image} title={project.title} />
+                    {/* Right Column: Large Rounded Image Preview (5 Cols) */}
+                    <div className="lg:col-span-5 flex items-center justify-center order-1 lg:order-2">
+                      <div className="w-full aspect-[16/10] sm:aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 bg-[#070A12] shadow-2xl relative group-hover:border-indigo-400/30 transition-all duration-300">
+                        {project.image ? (
+                          <img
+                            src={project.image}
+                            alt={`${project.title} Preview`}
+                            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center font-mono text-xs text-slate-500">
+                            No preview available
+                          </div>
+                        )}
+                        {/* Soft gradient glass reflection */}
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                       </div>
                     </div>
                   </div>
