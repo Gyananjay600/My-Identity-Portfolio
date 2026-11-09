@@ -28,10 +28,11 @@
   width: min(96%, 980px);
   min-height: 460px;
   border-radius: 32px;
-  transform-style: preserve-3d;
-  will-change: transform, opacity;
+  transform-style: flat;
+  will-change: transform, opacity, filter;
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.45s ease,
               box-shadow 0.4s ease;
   user-select: none;
 }

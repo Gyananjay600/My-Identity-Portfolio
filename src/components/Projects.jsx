@@ -89,31 +89,35 @@ export default function Projects() {
               const isRight = diff === 1;
               const isVisible = Math.abs(diff) <= 1;
 
-              // 3D transform calculations for expansive depth stack
+              // 3D transform calculations: Active card is strictly in FRONT with zIndex 50 and translateZ(80px)
               let translateX = "0%";
-              let rotateY = 0;
+              let translateZ = 80;
               let scale = 1;
-              let zIndex = 30;
+              let zIndex = 50;
               let opacity = 1;
+              let blur = "0px";
 
               if (isLeft) {
-                translateX = "-38%";
-                rotateY = 16;
-                scale = 0.88;
-                zIndex = 20;
-                opacity = 0.6;
+                translateX = "-48%";
+                translateZ = -140;
+                scale = 0.86;
+                zIndex = 10;
+                opacity = 0.35;
+                blur = "3px";
               } else if (isRight) {
-                translateX = "38%";
-                rotateY = -16;
-                scale = 0.88;
-                zIndex = 20;
-                opacity = 0.6;
+                translateX = "48%";
+                translateZ = -140;
+                scale = 0.86;
+                zIndex = 10;
+                opacity = 0.35;
+                blur = "3px";
               } else if (!isActive) {
                 translateX = diff > 0 ? "70%" : "-70%";
-                rotateY = diff > 0 ? -28 : 28;
-                scale = 0.75;
-                zIndex = 10;
+                translateZ = -220;
+                scale = 0.72;
+                zIndex = 5;
                 opacity = 0;
+                blur = "6px";
               }
 
               const indexStr = String(i + 1).padStart(2, "0");
@@ -127,13 +131,18 @@ export default function Projects() {
                     if (isRight) handleNext();
                   }}
                   style={{
-                    transform: `translateX(${translateX}) scale(${scale}) rotateY(${rotateY}deg)`,
+                    transform: `translate3d(${translateX}, 0, ${translateZ}px) scale(${scale})`,
                     zIndex,
                     opacity,
+                    filter: `blur(${blur})`,
                     cursor: isActive ? "default" : "pointer",
                     pointerEvents: isVisible ? "auto" : "none",
                   }}
-                  className="projects-deck-card border border-indigo-500/30 dark:border-indigo-400/25 bg-[#0B0F19] text-white p-6 sm:p-9 md:p-11 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.85)] flex flex-col justify-between overflow-hidden"
+                  className={`projects-deck-card border border-indigo-500/30 dark:border-indigo-400/25 bg-[#0B0F19] text-white p-6 sm:p-9 md:p-11 flex flex-col justify-between overflow-hidden transition-all duration-500 ${
+                    isActive
+                      ? "shadow-[0_35px_90px_-15px_rgba(0,0,0,0.95)] ring-1 ring-white/10"
+                      : "shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:opacity-60"
+                  }`}
                 >
                   {/* Top neon sheen line */}
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-400/50 to-transparent" />
