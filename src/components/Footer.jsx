@@ -16,25 +16,28 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub Profile"
-            className="flex h-9 w-9 items-center justify-center rounded-xl border hairline bg-cream text-ink shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brass hover:text-brass hover:shadow-card"
+            title="GitHub Profile"
+            className="btn-silver-line group flex h-10 w-10 items-center justify-center rounded-xl bg-cream-soft text-[#24292e] dark:text-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-card"
           >
-            <FaGithub size={16} />
+            <FaGithub size={17} className="transition-transform duration-300 group-hover:scale-115" />
           </a>
           <a
             href={profile.social.linkedin}
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn Profile"
-            className="flex h-9 w-9 items-center justify-center rounded-xl border hairline bg-cream text-ink shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brass hover:text-brass hover:shadow-card"
+            title="LinkedIn Profile"
+            className="btn-silver-line group flex h-10 w-10 items-center justify-center rounded-xl bg-cream-soft text-[#0a66c2] shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-card"
           >
-            <FaLinkedinIn size={16} />
+            <FaLinkedinIn size={17} className="transition-transform duration-300 group-hover:scale-115" />
           </a>
           <a
             href={`mailto:${profile.email}`}
             aria-label="Send Email"
-            className="flex h-9 w-9 items-center justify-center rounded-xl border hairline bg-cream text-ink shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brass hover:text-brass hover:shadow-card"
+            title="Send Email"
+            className="btn-silver-line group flex h-10 w-10 items-center justify-center rounded-xl bg-cream-soft text-[#ea4335] shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-card"
           >
-            <HiEnvelope size={16} />
+            <HiEnvelope size={18} className="transition-transform duration-300 group-hover:scale-115" />
           </a>
         </div>
 

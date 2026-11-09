@@ -1,7 +1,9 @@
+'use client';
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { HiEnvelope, HiPaperAirplane, HiMapPin, HiPhone } from "react-icons/hi2";
-import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import SectionHeading from "./SectionHeading.jsx";
 import { profile } from "../data/profile.js";
 
@@ -12,20 +14,12 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // No backend needed: this opens the visitor's own email client with
-    // everything pre-filled, addressed straight to you. Works everywhere,
-    // zero setup. See README "Contact form" section to switch to EmailJS
-    // for a fully in-page send instead.
     const subject = encodeURIComponent(form.subject || `Portfolio message from ${form.name}`);
     const body = encodeURIComponent(
       `${form.message}\n\n— ${form.name} (${form.email})`
     );
     window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
   };
-
-  const whatsappHref = `https://wa.me/${profile.whatsapp}?text=${encodeURIComponent(
-    "Hi Gyananjay, I found your portfolio and would like to connect."
-  )}`;
 
   return (
     <section id="contact" className="relative py-12 sm:py-16">
@@ -47,9 +41,9 @@ export default function Contact() {
           >
             <a
               href={`mailto:${profile.email}`}
-              className="group flex items-center gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-brass hover:shadow-premium"
+              className="btn-silver-line group flex items-center gap-4 rounded-2xl bg-cream-soft p-5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-brass hover:shadow-premium"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft shadow-sm transition-transform duration-300 group-hover:scale-110">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#ea4335] text-white shadow-sm transition-transform duration-300 group-hover:scale-110">
                 <HiEnvelope size={19} />
               </span>
               <div>
@@ -58,34 +52,25 @@ export default function Contact() {
               </div>
             </a>
 
+            {/* Direct LinkedIn channel replaces phone number */}
             <a
-              href={whatsappHref}
+              href={profile.social.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-brass hover:shadow-premium"
+              className="btn-silver-line group flex items-center gap-4 rounded-2xl bg-cream-soft p-5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-brass hover:shadow-premium"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#25D366] text-white shadow-sm transition-transform duration-300 group-hover:scale-110">
-                <FaWhatsapp size={20} />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0a66c2] text-white shadow-sm transition-transform duration-300 group-hover:scale-110">
+                <FaLinkedinIn size={19} />
               </span>
               <div>
-                <p className="section-label">WhatsApp</p>
-                <p className="font-display text-sm font-medium text-ink transition-colors group-hover:text-brass">{profile.phone}</p>
+                <p className="section-label">LinkedIn</p>
+                <p className="font-display text-sm font-medium text-ink transition-colors group-hover:text-brass">Connect on LinkedIn</p>
               </div>
             </a>
 
             <div className="flex items-center gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft shadow-sm">
-                <HiPhone size={19} />
-              </span>
-              <div>
-                <p className="section-label">Phone</p>
-                <p className="font-display text-sm font-medium text-ink">{profile.phone}</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 rounded-2xl border hairline bg-cream-soft p-5 shadow-card">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-deep text-cream-soft shadow-sm">
-                <HiMapPin size={19} />
+                <HiMapPin size={19} className="text-brass" />
               </span>
               <div>
                 <p className="section-label">Location</p>
@@ -93,24 +78,35 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Social logos with proper brand colors & style move effect */}
             <div className="flex items-center gap-3 pt-2">
               <a
                 href={profile.social.github}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub Profile"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border hairline bg-cream-soft text-ink shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brass hover:text-brass hover:shadow-card"
+                title="GitHub Profile"
+                className="btn-silver-line group flex h-11 w-11 items-center justify-center rounded-xl bg-cream-soft text-[#24292e] dark:text-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-md"
               >
-                <FaGithub size={18} />
+                <FaGithub size={19} className="transition-transform duration-300 group-hover:scale-115" />
               </a>
               <a
                 href={profile.social.linkedin}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn Profile"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border hairline bg-cream-soft text-ink shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brass hover:text-brass hover:shadow-card"
+                title="LinkedIn Profile"
+                className="btn-silver-line group flex h-11 w-11 items-center justify-center rounded-xl bg-cream-soft text-[#0a66c2] shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-md"
               >
-                <FaLinkedinIn size={18} />
+                <FaLinkedinIn size={18} className="transition-transform duration-300 group-hover:scale-115" />
+              </a>
+              <a
+                href={`mailto:${profile.email}`}
+                aria-label="Send Email"
+                title="Send Email"
+                className="btn-silver-line group flex h-11 w-11 items-center justify-center rounded-xl bg-cream-soft text-[#ea4335] shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-md"
+              >
+                <HiEnvelope size={19} className="transition-transform duration-300 group-hover:scale-115" />
               </a>
             </div>
           </motion.div>
@@ -130,7 +126,7 @@ export default function Contact() {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                placeholder="Full name"
+                placeholder="Jane Doe"
                 required
               />
               <Field
@@ -139,7 +135,7 @@ export default function Contact() {
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="you@example.com"
+                placeholder="jane@company.com"
                 required
               />
             </div>
@@ -148,7 +144,7 @@ export default function Contact() {
               name="subject"
               value={form.subject}
               onChange={handleChange}
-              placeholder="What's this about?"
+              placeholder="Java / Spring Boot opportunity"
             />
             <div>
               <label htmlFor="message" className="section-label">
@@ -161,13 +157,13 @@ export default function Contact() {
                 required
                 value={form.message}
                 onChange={handleChange}
-                placeholder="Tell me a bit about the role or project…"
-                className="mt-2 w-full resize-none rounded-xl border hairline bg-cream px-4 py-3 text-base sm:text-sm text-ink placeholder:text-ink-faint focus:border-brass"
+                placeholder="Tell me about the role, project, or what you're building..."
+                className="mt-2 w-full rounded-xl border hairline bg-cream px-4 py-3 text-base sm:text-sm text-ink placeholder:text-ink-faint focus:border-brass transition-colors duration-200"
               />
             </div>
             <button
               type="submit"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-deep px-6 py-3 font-mono text-sm text-cream-soft shadow-premium transition-all duration-300 hover:-translate-y-0.5 hover:bg-brass hover:shadow-brass/25 sm:w-auto"
+              className="btn-silver-line inline-flex w-full items-center justify-center gap-2 rounded-full bg-deep px-6 py-3 font-mono text-sm text-cream-soft shadow-premium hover:bg-brass sm:w-auto"
             >
               <HiPaperAirplane size={15} className="rotate-45" /> Send Message
             </button>
@@ -195,7 +191,7 @@ function Field({ label, name, value, onChange, placeholder, type = "text", requi
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="mt-2 w-full rounded-xl border hairline bg-cream px-4 py-3 text-base sm:text-sm text-ink placeholder:text-ink-faint focus:border-brass"
+        className="mt-2 w-full rounded-xl border hairline bg-cream px-4 py-3 text-base sm:text-sm text-ink placeholder:text-ink-faint focus:border-brass transition-colors duration-200"
       />
     </div>
   );

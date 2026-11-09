@@ -54,7 +54,7 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="hidden rounded-full bg-deep px-5 py-2 font-mono text-[0.78rem] text-cream-soft shadow-premium transition-all duration-300 hover:-translate-y-0.5 hover:bg-brass hover:shadow-brass/25 sm:inline-block"
+            className="btn-silver-line hidden rounded-full bg-deep px-5 py-2 font-mono text-[0.78rem] text-cream-soft shadow-premium hover:bg-brass sm:inline-block"
           >
             Hire Me
           </a>

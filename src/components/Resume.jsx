@@ -30,7 +30,7 @@ export default function Resume() {
             <a
               href={profile.resumePath}
               download={profile.resumeDownloadName || "FinalResume(Gyananjay).pdf"}
-              className="group inline-flex items-center gap-2 rounded-full bg-deep px-6 py-3 font-mono text-sm text-cream-soft shadow-premium transition-all duration-300 hover:-translate-y-0.5 hover:bg-brass hover:shadow-brass/30"
+              className="btn-silver-line group inline-flex items-center gap-2 rounded-full bg-deep px-6 py-3 font-mono text-sm text-cream-soft shadow-premium hover:bg-brass"
             >
               <FiDownload size={16} className="transition-transform duration-300 group-hover:translate-y-0.5" />
               <span>Download Resume</span>
@@ -39,7 +39,7 @@ export default function Resume() {
               href={profile.resumePath}
               target="_blank"
               rel="noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full border hairline bg-cream px-6 py-3 font-mono text-sm text-ink shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brass hover:text-brass"
+              className="btn-silver-line group inline-flex items-center gap-2 rounded-full bg-cream px-6 py-3 font-mono text-sm text-ink hover:text-brass"
             >
               <FiEye size={16} className="transition-transform duration-300 group-hover:scale-110" />
               <span>Preview</span>
