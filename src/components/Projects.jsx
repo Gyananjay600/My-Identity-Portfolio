@@ -121,7 +121,7 @@ export default function Projects() {
               }
 
               const indexStr = String(i + 1).padStart(2, "0");
-              const isVercelLive = project.live && project.live.includes("vercel.app");
+              const isLiveDeployed = project.live && (project.live.includes("onrender.com") || project.live.includes("vercel.app") || (!project.live.includes("github.com") && project.live.startsWith("http")));
 
               return (
                 <div
@@ -158,7 +158,7 @@ export default function Projects() {
                             {indexStr}
                           </span>
 
-                          {isVercelLive ? (
+                          {isLiveDeployed ? (
                             <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-mono text-[0.68rem] font-semibold text-emerald-400">
                               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                               Live Deployment
@@ -237,7 +237,7 @@ export default function Projects() {
                           className="btn-silver-line group inline-flex items-center gap-2 rounded-full bg-deep px-5 py-2.5 font-mono text-xs sm:text-sm font-semibold text-white shadow-card hover:bg-brass transition-all duration-300"
                         >
                           <FiGlobe size={15} className="text-brass-light transition-transform duration-300 group-hover:rotate-12" />
-                          <span>{isVercelLive ? "Visit Live Site" : "Live Demo"}</span>
+                          <span>{isLiveDeployed ? "Visit Live Site" : "Live Demo"}</span>
                           <FiExternalLink size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         </a>
                       </div>

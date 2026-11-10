@@ -34,7 +34,7 @@ const experienceMeta = {
     tech: ["Spring Boot 3", "Spring AI", "Groq LLaMA 3", "Docker", "Microservices"],
     badgeColor: "text-sky-500 bg-sky-500/10 border-sky-500/20",
     showcaseProjects: [
-      { name: "Jay Durga Silpanusthana Platform", link: "https://jay-durga-silpanusthana-platform-du.vercel.app/", external: true, stack: "Live on Vercel" },
+      { name: "Jay Durga Silpanusthana Platform", link: "https://jaydurga-silpanusthana-platform.onrender.com/", external: true, stack: "Live on Render" },
       { name: "AI-Integrated Developer Portfolio", link: "https://my-identity-portfolio.vercel.app/", external: true, stack: "Live on Vercel" },
       { name: "Full-Stack Blog Platform", link: "#projects", stack: "Spring Boot + JWT" },
     ],

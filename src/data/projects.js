@@ -13,7 +13,7 @@ export const projects = [
     stack: ["React", "Tailwind CSS", "Web Speech API", "react-i18next", "Node.js", "Express", "MySQL"],
     image: "/assets/images/projects/jaydurga-silpanusthana.png",
     github: "https://github.com/Gyananjay600/JayDurga_Silpanusthana_Platform",
-    live: "https://jay-durga-silpanusthana-platform-du.vercel.app/",
+    live: "https://jaydurga-silpanusthana-platform.onrender.com/",
     metrics: [
       { label: "Language", value: "Bilingual" },
       { label: "Voice AI", value: "Web Speech" },
